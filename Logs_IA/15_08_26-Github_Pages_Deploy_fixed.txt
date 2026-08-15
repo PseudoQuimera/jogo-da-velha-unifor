@@ -1,0 +1,203 @@
+Tá, agora temos a informação importante: o workflow já está sendo reconhecido, mas o site continua mostrando um link em vez de renderizar o index.html.
+
+Isso indica que o index.html não está na raiz do artifact que está sendo publicado. O próprio GitHub confirma que, usando Actions, o index.html precisa estar no nível superior do artifact.
+
+Vamos fazer do jeito mais simples possível.
+
+1. Deixe o repositório assim
+
+Se você tem um único HTML, coloque-o na raiz:
+
+meuapp/
+├── index.html
+└── .github/
+    └── workflows/
+        └── deploy.yml
+2. Use este deploy.yml
+name: Deploy GitHub Pages
+
+
+on:
+  push:
+    branches: ["main"]
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+
+      - name: Upload HTML
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "."
+
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+Esse é essencialmente o fluxo recomendado pelo próprio GitHub para um site estático sem etapa de build.
+
+3. Faça um novo push
+git add .
+git commit -m "Fix GitHub Pages"
+git push origin main
+
+Depois espere o Deploy GitHub Pages terminar.
+
+4. Um detalhe MUITO importante
+
+Se o seu arquivo atualmente estiver assim:
+
+src/index.html
+
+não use path: "." esperando que ele seja a página inicial.
+
+Nesse caso, o artifact ficaria com:
+
+src/
+└── index.html
+
+e o GitHub não encontra index.html no nível superior. O index.html precisa estar diretamente na raiz do conteúdo publicado.
+
+Então, para eliminar toda essa confusão: mova o único HTML para a raiz do repositório e chame-o exatamente index.html.
+
+Se fizer isso, /meuapp/ deve carregar o conteúdo do HTML, não uma página com um link.
+
+como dou deploy??
+
+Se o seu deploy.yml já está em:
+
+.github/workflows/deploy.yml
+
+e você alterou o arquivo, não existe um botão de “Deploy” que você precise apertar.
+
+Seu workflow tem:
+
+on:
+  push:
+    branches: ["main"]
+
+Então é só fazer push para a main:
+
+git add .
+git commit -m "Deploy site"
+git push origin main
+
+Depois:
+
+Abra o repositório no GitHub.
+Vá em Actions.
+Clique em Deploy GitHub Pages.
+Aguarde ficar ✅.
+Acesse seu endereço do Pages.
+
+Se você já fez o push, então não precisa fazer outro deploy manual: o workflow deveria ter iniciado automaticamente.
+
+Se quiser forçar uma nova execução sem alterar o HTML, pode fazer:
+
+git commit --allow-empty -m "Trigger GitHub Pages deploy"
+git push origin main
+
+Isso dispara o workflow novamente.
+
+é. assim funcionou. Mas quero q o index esteja dentro do src
+
+Sim. Pode deixar o index.html dentro de src. O segredo é fazer o artifact ser o conteúdo de src, e não a raiz do projeto.
+
+Estrutura:
+
+meuapp/
+├── src/
+│   └── index.html
+└── .github/
+    └── workflows/
+        └── deploy.yml
+
+E no deploy.yml:
+
+name: Deploy GitHub Pages
+
+
+on:
+  push:
+    branches: ["main"]
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+
+    steps:
+      - uses: actions/checkout@v4
+
+
+      - uses: actions/configure-pages@v5
+
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./src"
+
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+O ponto importante é:
+
+path: "./src"
+
+Assim, o GitHub pega o conteúdo de src e coloca esse conteúdo na raiz do site.
+
+Ou seja:
+
+src/index.html
+      ↓
+https://meuuser.github.io/meuapp/
+      ↓
+index.html
+
+Depois:
+
+git add .
+git commit -m "Move index to src"
+git push origin main
+
+O push dispara o deploy automaticamente.
+
+Obtenha respostas mais inteligentes, carregamento de imagens e de arquivos e muito mais.
+Entrar
+Cadastre-se gratuitamente
