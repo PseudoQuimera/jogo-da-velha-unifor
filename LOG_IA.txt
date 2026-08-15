@@ -1,0 +1,280 @@
+13/08/2026
+
+"Documentação detalhada do processo de uso da IA, evidência de correções orientadas pelo CDU(Especificação de Caso de Uso) e checklist de aceite." gere um modelo da documentação
+
+
+DOCUMENTAÇÃO DO PROCESSO DE USO DA IA
+
+Projeto/Sistema: [Nome do projeto]
+Módulo/Funcionalidade: [Nome da funcionalidade]
+Versão: [Versão]
+Data: [DD/MM/AAAA]
+Responsável: [Nome/equipe]
+Revisor: [Nome/equipe]
+Status: [Em elaboração / Em revisão / Aprovado]
+
+1. Objetivo
+
+Documentar de forma detalhada o processo de utilização da Inteligência Artificial (IA) no desenvolvimento, análise, correção ou validação da funcionalidade, apresentando:
+
+como a IA foi utilizada;
+quais informações foram fornecidas à IA;
+quais resultados foram obtidos;
+quais correções foram realizadas;
+como as correções foram orientadas pelo CDU — Especificação de Caso de Uso;
+quais evidências comprovam a aplicação das correções;
+quais critérios foram utilizados para o aceite da solução.
+2. Escopo
+
+Esta documentação contempla:
+
+Funcionalidade analisada: [Descrição]
+
+Caso de Uso relacionado: [Identificação e nome do CDU]
+
+Objetivo do Caso de Uso: [Descrição resumida]
+
+Componentes envolvidos:
+
+[Frontend]
+[Backend]
+[Banco de dados]
+[API]
+[Outro]
+3. Referência ao CDU
+Campo	Informação
+ID do CDU	[CDU-XXX]
+Nome	[Nome do Caso de Uso]
+Versão	[Versão]
+Data	[Data]
+Documento de referência	[Nome/local do documento]
+Responsável	[Nome]
+3.1 Requisitos extraídos do CDU
+ID	Requisito/Regra do CDU	Critério esperado
+CDU-01	[Descrição]	[Resultado esperado]
+CDU-02	[Descrição]	[Resultado esperado]
+CDU-03	[Descrição]	[Resultado esperado]
+4. Processo de Uso da IA
+4.1 Objetivo do uso da IA
+
+A IA foi utilizada para:
+
+[ ] Análise do código
+[ ] Identificação de inconsistências
+[ ] Sugestão de correções
+[ ] Geração de testes
+[ ] Validação de regras de negócio
+[ ] Análise de aderência ao CDU
+[ ] Documentação
+[ ] Outro: [Descrever]
+
+4.2 Contexto fornecido à IA
+
+Informações fornecidas:
+
+[Descrição do problema]
+[Trecho de código/arquivo analisado]
+[Caso de uso]
+[Regras de negócio]
+[Mensagens de erro]
+[Resultado esperado]
+[Outras informações relevantes]
+
+Restrições/instruções fornecidas à IA:
+
+[Inserir aqui o prompt ou instruções utilizadas.]
+
+4.3 Prompt utilizado
+[Inserir o prompt utilizado na interação com a IA.]
+
+Data da interação: [DD/MM/AAAA]
+Ferramenta/modelo de IA: [Nome/modelo]
+Responsável pela interação: [Nome]
+
+4.4 Resultado produzido pela IA
+
+Problemas identificados pela IA:
+
+[Problema identificado]
+[Problema identificado]
+[Problema identificado]
+
+Sugestões apresentadas:
+
+[Sugestão]
+[Sugestão]
+[Sugestão]
+
+Observação: As sugestões da IA foram analisadas pela equipe e somente aquelas consideradas tecnicamente e funcionalmente adequadas foram aplicadas.
+
+5. Evidências das Correções Orientadas pelo CDU
+5.1 Correção 01
+
+Problema identificado:
+[Descrever o problema.]
+
+Referência no CDU:
+[CDU-XX / seção / regra]
+
+Orientação do CDU:
+[Descrever o comportamento esperado.]
+
+Sugestão da IA:
+[Descrever resumidamente a recomendação.]
+
+Correção realizada:
+[Descrever o que foi alterado.]
+
+Evidência:
+[Inserir print, trecho de código, commit, log, resultado de teste ou link para evidência.]
+
+Resultado após correção:
+[Descrever o resultado obtido.]
+
+Status: [ ] Aprovado [ ] Reprovado [ ] Pendente
+
+5.2 Correção 02
+
+Problema identificado:
+[Descrever.]
+
+Referência no CDU:
+[CDU-XX / seção / regra]
+
+Orientação do CDU:
+[Descrever.]
+
+Sugestão da IA:
+[Descrever.]
+
+Correção realizada:
+[Descrever.]
+
+Evidência:
+[Inserir evidência.]
+
+Resultado após correção:
+[Descrever.]
+
+Status: [ ] Aprovado [ ] Reprovado [ ] Pendente
+
+6. Matriz de Rastreabilidade
+ID	Requisito do CDU	Problema encontrado	Orientação da IA	Correção aplicada	Evidência	Status
+01	[Requisito]	[Problema]	[Orientação]	[Correção]	[Evidência]	Aprovado
+02	[Requisito]	[Problema]	[Orientação]	[Correção]	[Evidência]	Aprovado
+03	[Requisito]	[Problema]	[Orientação]	[Correção]	[Evidência]	Pendente
+7. Validação das Correções
+
+Para cada correção, devem ser realizados testes que comprovem a aderência ao CDU.
+
+Teste	Cenário	Entrada	Resultado esperado	Resultado obtido	Status
+CT-01	[Cenário]	[Entrada]	[Esperado]	[Obtido]	Aprovado
+CT-02	[Cenário]	[Entrada]	[Esperado]	[Obtido]	Aprovado
+CT-03	[Cenário]	[Entrada]	[Esperado]	[Obtido]	Pendente
+8. Evidências
+
+Anexar ou referenciar as evidências utilizadas na validação:
+
+Evidência E01: [Print/tela]
+Evidência E02: [Log]
+Evidência E03: [Resultado do teste]
+Evidência E04: [Commit/Pull Request]
+Evidência E05: [Comparativo antes/depois]
+Evidência E06: [Outro]
+
+Cada evidência deve possuir identificação e estar relacionada a um requisito ou critério do CDU.
+
+9. Checklist de Aceite
+9.1 Documentação
+
+O CDU utilizado como referência está identificado.
+
+A versão do CDU está registrada.
+
+O objetivo do uso da IA está documentado.
+
+O contexto fornecido à IA está documentado.
+
+O prompt utilizado está registrado.
+
+O resultado produzido pela IA está registrado.
+
+As decisões tomadas pela equipe estão documentadas.
+
+9.2 Correções
+
+Todos os problemas identificados foram analisados.
+
+Cada correção possui referência ao CDU.
+
+As alterações realizadas estão documentadas.
+
+Existe evidência para cada correção relevante.
+
+As correções foram revisadas tecnicamente.
+
+Nenhuma sugestão da IA foi aplicada sem validação humana.
+
+9.3 Testes
+
+Os cenários previstos no CDU foram testados.
+
+Os resultados obtidos correspondem aos resultados esperados.
+
+Os testes positivos foram executados.
+
+Os testes de exceção/erro foram executados.
+
+Não foram identificadas regressões.
+
+As evidências dos testes estão anexadas.
+
+9.4 Aceite
+
+Todos os requisitos obrigatórios do CDU foram atendidos.
+
+Todas as correções obrigatórias foram implementadas.
+
+Todas as evidências necessárias estão disponíveis.
+
+Os testes foram aprovados.
+
+A documentação foi revisada.
+
+O responsável pelo aceite aprovou a entrega.
+
+10. Resultado Final
+
+Situação da funcionalidade:
+
+[ ] Aprovada para aceite
+[ ] Aprovada com ressalvas
+[ ] Reprovada
+[ ] Pendente de correções
+
+Resumo da validação:
+
+[Descrever brevemente o resultado final da análise e dos testes.]
+
+Pendências:
+
+[Pendência]
+[Pendência]
+[Pendência]
+
+Observações:
+
+[Informações adicionais.]
+
+11. Aprovações
+Papel	Nome	Data	Status
+Desenvolvedor	[Nome]	[Data]	[Aprovado/Pendente]
+QA/Testes	[Nome]	[Data]	[Aprovado/Pendente]
+Responsável pelo CDU	[Nome]	[Data]	[Aprovado/Pendente]
+Product Owner/Responsável	[Nome]	[Data]	[Aprovado/Pendente]
+12. Controle de Versões
+Versão	Data	Alteração	Responsável
+1.0	[Data]	Criação do documento	[Nome]
+1.1	[Data]	[Descrição]	[Nome]
+
+Critério final de aceite: a funcionalidade somente deverá ser considerada aceita quando os requisitos aplicáveis do CDU estiverem atendidos, as correções estiverem devidamente evidenciadas, os testes estiverem aprovados e os responsáveis pelo aceite tiverem registrado sua aprovação.
