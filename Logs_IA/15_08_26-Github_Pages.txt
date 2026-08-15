@@ -177,3 +177,123 @@ dist/
 GitHub Pages
 
 Se você me disser qual projeto/framework está usando (por exemplo, React, Vite, Angular, HTML puro, etc.) e, se possível, mandar a estrutura das pastas, eu posso te passar o pages.yml exatamente para o seu caso.
+
+
+
+html puro
+
+Perfeito. Se é HTML puro e a estrutura src/index.html é obrigatória, você não precisa mover o arquivo. A solução mais limpa é fazer o GitHub Actions publicar a pasta src.
+
+Sua estrutura pode ficar assim:
+
+meu-projeto/
+├── src/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+└── .github/
+    └── workflows/
+        └── pages.yml
+1. Crie o workflow
+
+No seu repositório, crie o arquivo:
+
+.github/workflows/pages.yml
+
+Coloque:
+
+name: Deploy site
+
+
+on:
+  push:
+    branches:
+      - main
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+
+      - name: Preparar site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './src'
+
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
+2. Ative o GitHub Pages
+
+No GitHub, vá para:
+
+Settings → Pages
+
+Em Build and deployment, coloque:
+
+Source: GitHub Actions
+
+Não escolha main + /root.
+
+Depois disso, faça um push para a branch main.
+
+O GitHub Actions vai pegar:
+
+src/index.html
+
+e transformá-lo na raiz do site.
+
+Ou seja, você terá:
+
+Repositório
+    │
+    └── src/
+         └── index.html
+                 ↓
+         GitHub Pages
+                 ↓
+https://usuario.github.io/repositorio/
+⚠️ Um detalhe importante
+
+Se seu index.html referencia CSS/JS assim:
+
+<link rel="stylesheet" href="/src/style.css">
+<script src="/src/script.js"></script>
+
+não faça isso.
+
+Como src será a raiz publicada, use:
+
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+ou:
+
+<link rel="stylesheet" href="./style.css">
+<script src="./script.js"></script>
+
+Assim funciona corretamente.
+
+Se você me mostrar como estão as pastas dentro de src (por exemplo src/css, src/img, src/js etc.), posso montar o workflow e os caminhos do seu index.html certinhos.
