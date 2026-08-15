@@ -2,8 +2,7 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -25,18 +24,10 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Verify HTML
-        run: |
-          echo "Commit: $GITHUB_SHA"
-          echo "Arquivos:"
-          find ./src -type f
-          echo "Primeiras linhas do HTML:"
-          head -30 ./src/index.html
-
-      - name: Upload artifact
+      - name: Upload HTML
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./src
+          path: "./src"
 
       - name: Deploy
         id: deployment
