@@ -1,0 +1,179 @@
+como colocar um .html no  github pages. não aparece a pasta src que contém o arquivo
+
+Sim. O ponto principal é que o GitHub Pages precisa encontrar o arquivo HTML na pasta que você configurou como fonte de publicação.
+
+Se sua estrutura é algo assim:
+
+meu-projeto/
+├── README.md
+├── src/
+│   └── index.html
+├── css/
+└── js/
+
+e você não consegue selecionar/enxergar a pasta src no GitHub Pages, provavelmente é porque o GitHub Pages não permite escolher qualquer pasta como origem. Normalmente ele oferece:
+
+/(root) — raiz do repositório
+/docs — pasta docs na raiz
+Opção mais simples
+
+Mova o index.html para a raiz:
+
+meu-projeto/
+├── index.html
+├── css/
+└── js/
+
+Depois:
+
+Entre no seu repositório no GitHub.
+Vá em Settings.
+Entre em Pages.
+Em Build and deployment, escolha Deploy from a branch.
+Em Branch, selecione main.
+Em pasta, selecione /(root).
+Clique em Save.
+Aguarde alguns minutos.
+
+Seu site ficará em algo como:
+
+https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/
+Se você quer manter o src
+
+Se você realmente precisa manter:
+
+src/index.html
+
+uma alternativa é renomear src para docs:
+
+meu-projeto/
+├── docs/
+│   └── index.html
+├── css/
+└── js/
+
+Então, no Pages, escolha:
+
+Branch: main
+Folder: /docs
+
+Importante: se o seu HTML estiver em src e você estiver tentando selecionar src diretamente no menu do Pages, é justamente por isso que ele não aparece: o Pages não oferece src como opção de pasta de publicação.
+
+Se você me mandar uma imagem da estrutura do seu repositório no GitHub, posso te dizer exatamente onde colocar o .html e quais opções selecionar no Pages.
+
+a pasta src com o index.html é exigido. como posso fazer? Quem sabe mudar a root para lá?
+
+Sim — dá para manter src/index.html, mas o GitHub Pages não permite simplesmente configurar a pasta src como a root quando você usa a publicação padrão por branch.
+
+Você tem algumas opções.
+
+1. Melhor opção: GitHub Actions
+
+Se a estrutura precisa obrigatoriamente ser:
+
+projeto/
+└── src/
+    └── index.html
+
+você pode usar GitHub Actions para publicar o conteúdo de src.
+
+No GitHub:
+
+Settings → Pages → Build and deployment → Source → GitHub Actions
+
+Depois crie:
+
+.github/
+└── workflows/
+    └── pages.yml
+
+com um workflow que publique src como o site.
+
+Por exemplo:
+
+name: Deploy GitHub Pages
+
+
+on:
+  push:
+    branches: ["main"]
+
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+
+      - name: Preparar site
+        run: |
+          mkdir _site
+          cp -r src/* _site/
+
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+
+      - name: Upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+Assim você pode continuar com:
+
+projeto/
+├── src/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+├── .github/
+│   └── workflows/
+│       └── pages.yml
+└── README.md
+
+O GitHub Pages vai publicar o conteúdo de src, mas externamente o site funcionará como se src fosse a raiz:
+
+https://seu-usuario.github.io/seu-projeto/
+                           ↑
+                     index.html
+2. Se src for exigido por um framework
+
+Se isso for, por exemplo, um projeto React/Vite/Angular/etc., não recomendo simplesmente copiar src. Normalmente src contém código-fonte que precisa primeiro ser compilado, e o resultado vai para dist, build ou outra pasta.
+
+Nesse caso, o correto seria:
+
+src/
+   index.html
+   ...
+        ↓
+     npm run build
+        ↓
+dist/
+   index.html
+   assets/
+   ...
+        ↓
+GitHub Pages
+
+Se você me disser qual projeto/framework está usando (por exemplo, React, Vite, Angular, HTML puro, etc.) e, se possível, mandar a estrutura das pastas, eu posso te passar o pages.yml exatamente para o seu caso.
