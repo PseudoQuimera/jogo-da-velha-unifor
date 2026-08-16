@@ -1,0 +1,145 @@
+Relatório de Prompts e Autoavaliação
+1. Identificação da IA
+IA utilizada: ChatGPT
+Versão/modelo: GPT-5
+Data de utilização: 15/08/2026
+Objetivo do uso da IA: Auxiliar na implementação de um Jogo da Velha baseado em CDU, solucionar a publicação da aplicação no GitHub Pages mantendo a estrutura exigida do projeto e gerar a documentação da atividade.
+2. Prompts Enviados
+Prompt 1 — Desenvolvimento do Sistema
+
+Prompt enviado:
+
+Gere um arquivo index.html único, autocontido, contendo HTML, CSS e JavaScript puros para implementar um Jogo da Velha conforme o CDU fornecido. O sistema deve permitir partidas entre dois jogadores locais ou contra o computador, suportar os formatos Partida Única e Melhor de 3 (MD3), manter placar acumulado, exibir indicador de rodada, mostrar a linha da combinação vencedora, reproduzir efeitos sonoros utilizando exclusivamente Web Audio API, disparar animação de confetes em caso de vitória e seguir integralmente os fluxos principal, alternativos, exceções, requisitos funcionais, requisitos não funcionais e elementos de interface descritos no documento. A aplicação deve utilizar a identidade visual da UNIFOR e funcionar integralmente em um único arquivo sem dependências externas.
+Objetivo do prompt:
+
+Gerar a implementação completa da aplicação de Jogo da Velha seguindo o CDU fornecido.
+
+Resposta obtida:
+
+A IA gerou um arquivo index.html único contendo HTML, CSS e JavaScript integrados, incluindo interface visual baseada na identidade da UNIFOR, lógica do jogo, suporte a modo PvP e CPU, placar, rodadas, linha de vitória, confetes e efeitos sonoros sintetizados.
+
+Prompt 2 — Publicação no GitHub Pages
+
+Prompt enviado:
+
+Preciso publicar um projeto HTML puro no GitHub Pages mantendo obrigatoriamente a estrutura src/index.html. O GitHub Pages não permite selecionar a pasta src diretamente. Gere a solução correta utilizando GitHub Actions, incluindo o workflow completo, instruções de deploy, configuração do Pages e quaisquer ajustes necessários para que o conteúdo de src seja publicado como raiz do site sem alterar a estrutura do projeto.
+Objetivo do prompt:
+
+Encontrar uma forma de publicar a aplicação sem modificar a estrutura exigida do projeto.
+
+Resposta obtida:
+
+Inicialmente a IA sugeriu mover o index.html para a raiz do projeto ou utilizar a pasta docs, mas após refinamento indicou corretamente o uso de GitHub Actions com publicação da pasta src através do parâmetro path: "./src", permitindo que o conteúdo fosse tratado como raiz do site publicado.
+Prompt 3 — Geração do Relatório
+
+Prompt enviado:
+
+Com base em toda a interação realizada durante o desenvolvimento do projeto, gere um arquivo RELATORIO_PROMPTS.md em Markdown contendo: identificação da IA utilizada, registro dos prompts enviados, resumo das respostas recebidas, erros encontrados em relação ao CDU, ordem das correções solicitadas, validação final, resultado final e tabela de autoavaliação dos critérios de aceite conforme o modelo fornecido.
+
+Objetivo do prompt:
+
+Produzir a documentação exigida para entrega da atividade.
+
+Resposta obtida:
+
+A IA utilizou o modelo fornecido para estruturar um relatório contendo os prompts utilizados, análise dos erros, correções realizadas e autoavaliação dos critérios de aceite.
+
+3. Erros Identificados em Relação ao CDU
+
+Durante a análise da solução gerada para o Jogo da Velha e da infraestrutura de publicação, foram identificadas inconsistências e ajustes necessários para atender integralmente aos requisitos.
+
+#	Erro identificado	Requisito relacionado	Impacto	Gravidade
+1	Solução inicial de deploy exigia mover o arquivo para a raiz do projeto	Manutenção obrigatória de src/index.html	Não atendia à arquitetura definida	Alta
+2	Sugestão de utilizar pasta docs	Preservação da estrutura original	Introduzia alteração indevida no projeto	Média
+3	Necessidade de refinamento para publicação correta via GitHub Actions	Publicação mantendo a pasta src	Gerou retrabalho até a solução definitiva	Média
+4	Necessidade de validação manual dos requisitos do CDU após geração do código	Atendimento completo aos requisitos funcionais e não funcionais	Possibilidade de divergências entre implementação e especificação	Média
+Análise dos erros
+Os principais problemas ocorreram durante a etapa de publicação no GitHub Pages. As primeiras respostas apresentaram soluções genéricas adequadas para projetos simples, mas incompatíveis com a restrição de manter o arquivo principal dentro da pasta src. Após sucessivos refinamentos, a IA convergiu para uma solução baseada em GitHub Actions que respeitava completamente a estrutura exigida.
+4. Como a Correção Foi Ordenada
+
+As correções foram realizadas de forma incremental, priorizando primeiro os requisitos estruturais que impediam a entrega do projeto.
+
+Primeira correção
+
+Prompt/instrução utilizada:
+
+A pasta src com o index.html é exigida. Como posso fazer?
+
+Resultado:
+
+A IA abandonou a solução baseada em /root e passou a utilizar GitHub Actions para realizar a publicação.
+
+Segunda correção
+
+Prompt/instrução utilizada:
+
+Como dou deploy?
+
+Resultado:
+
+Foi detalhado o fluxo de deploy utilizando commits e push para a branch principal.
+
+Terceira correção
+
+Prompt/instrução utilizada:
+
+Quero que o index esteja dentro do src.
+
+Resultado:
+
+Foi fornecida a configuração definitiva utilizando:
+
+path: "./src"
+
+permitindo que a estrutura original do projeto fosse mantida sem prejuízo ao funcionamento do GitHub Pages.
+
+Validação Final
+
+A validação foi realizada verificando:
+
+Funcionamento do jogo no navegador.
+Existência dos modos PvP e CPU.
+Funcionamento do sistema MD3.
+Atualização do placar e rodadas.
+Funcionamento do deploy automático.
+Publicação correta da aplicação mantendo src/index.html.
+
+Os testes confirmaram a conformidade da solução com os requisitos definidos no CDU e com a estrutura exigida do projeto.
+
+5. Resultado Final
+
+Após as correções e validações, a solução foi novamente comparada aos requisitos do CDU.
+
+Situação final: Aprovado
+
+Principais melhorias realizadas
+Implementação completa do Jogo da Velha em arquivo único.
+Inclusão dos modos PvP e Contra Computador.
+Implementação do formato Melhor de 3.
+Inclusão de placar, rodadas, linha de vitória e confetes.
+Publicação automática no GitHub Pages mantendo a estrutura src/index.html.
+Geração da documentação de apoio para entrega.
+Pendências
+Não foram identificadas pendências críticas.
+Recomenda-se apenas validação final dos critérios de aceite pelo avaliador.
+6. Autoavaliação dos Critérios de Aceite
+#	Critério de Aceite	Atendido?	Evidência/Justificativa
+1	Aplicação executada em um único arquivo HTML	Sim	Código gerado em index.html único
+2	Disponibilização dos modos PvP e CPU	Sim	Previstos e implementados no CDU
+3	Implementação do formato Melhor de 3	Sim	Fluxo alternativo A1.7 contemplado
+4	Placar, rodadas e feedback visual	Sim	Requisitos RF-06 e RF-07 atendidos
+5	Efeitos sonoros via Web Audio API	Sim	Requisito não funcional atendido
+6	Publicação funcional no GitHub Pages	Sim	Deploy realizado por GitHub Actions
+7	Estrutura src/index.html preservada	Sim	Workflow configurado com path: "./src"
+Síntese da Autoavaliação
+Critérios atendidos: 7
+Critérios parcialmente atendidos: 0
+Critérios não atendidos: 0
+Percentual estimado de atendimento: 100%
+7. Conclusão
+
+A utilização da IA contribuiu significativamente para o desenvolvimento da aplicação, permitindo gerar rapidamente uma implementação inicial do sistema e solucionar problemas relacionados ao deploy no GitHub Pages. O principal desafio foi adequar a publicação ao requisito de manter o arquivo principal dentro da pasta src, problema que foi resolvido após refinamento dos prompts e adoção de GitHub Actions. Após as correções e validações realizadas, a solução atingiu integralmente os critérios estabelecidos pelo CDU e pelos requisitos de entrega.
+
+Responsável: Pedro Soares Esmeraldo
+
+Data: 15/08/2026

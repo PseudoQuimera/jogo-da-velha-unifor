@@ -1,0 +1,120 @@
+RELATORIO_PROMPTS.md****: Relatório em Markdown registrando qual IA foi utilizada, quais prompts foram enviados, quais erros a IA cometeu em relação ao CDU e como você ordenou a correção, além da tabela de autoavaliação dos Critérios de Aceite
+
+Faça o modelo do arquivo
+
+Relatório de Prompts e Autoavaliação
+1. Identificação da IA
+IA utilizada: [Nome da IA/modelo]
+Versão/modelo: [Versão, se disponível]
+Data de utilização: [DD/MM/AAAA]
+Objetivo do uso da IA: [Descrever brevemente a finalidade]
+2. Prompts Enviados
+Prompt 1
+
+[Inserir aqui o primeiro prompt enviado à IA.]
+
+Objetivo do prompt:
+[Descrever o que se esperava obter com este prompt.]
+
+Resposta obtida:
+[Resumo ou transcrição da resposta da IA.]
+
+Prompt 2
+
+[Inserir aqui o segundo prompt enviado à IA.]
+
+Objetivo do prompt:
+[Descrever o objetivo.]
+
+Resposta obtida:
+[Resumo ou transcrição da resposta.]
+
+Prompt 3
+
+[Inserir aqui outros prompts utilizados, se houver.]
+
+Objetivo do prompt:
+[Descrever o objetivo.]
+
+Resposta obtida:
+[Resumo ou transcrição da resposta.]
+
+3. Erros Identificados em Relação ao CDU
+
+Durante a análise das respostas geradas pela IA, foram identificados os seguintes problemas em relação aos requisitos definidos no CDU (Critérios de Definição/Documento de Uso):
+
+#	Erro identificado	Requisito do CDU relacionado	Impacto	Gravidade
+1	[Descrever o erro]	[Critério/requisito]	[Impacto causado]	[Baixa/Média/Alta]
+2	[Descrever o erro]	[Critério/requisito]	[Impacto causado]	[Baixa/Média/Alta]
+3	[Descrever o erro]	[Critério/requisito]	[Impacto causado]	[Baixa/Média/Alta]
+Análise dos erros
+
+[Explicar de forma objetiva por que as respostas da IA não atenderam completamente ao CDU e quais pontos precisaram ser ajustados.]
+
+4. Como a Correção Foi Ordenada
+
+As correções foram solicitadas à IA de forma progressiva, priorizando primeiro os problemas que comprometiam o atendimento aos requisitos principais.
+
+Ordem das correções
+
+[Primeira correção]
+Prompt/instrução utilizada:
+
+[Inserir a instrução enviada à IA.]
+
+Resultado:
+[Descrever o resultado obtido.]
+
+[Segunda correção]
+Prompt/instrução utilizada:
+
+[Inserir a instrução enviada à IA.]
+
+Resultado:
+[Descrever o resultado obtido.]
+
+[Terceira correção]
+Prompt/instrução utilizada:
+
+[Inserir a instrução enviada à IA.]
+
+Resultado:
+[Descrever o resultado obtido.]
+
+Validação final
+[Descrever como foi verificado que os problemas haviam sido corrigidos.]
+5. Resultado Final
+
+Após as correções, o resultado final foi comparado novamente com os requisitos do CDU.
+
+Situação final: [Aprovado / Aprovado com ressalvas / Reprovado]
+
+Principais melhorias realizadas:
+
+[Melhoria 1]
+[Melhoria 2]
+[Melhoria 3]
+[Melhoria 4]
+
+Pendências, se houver:
+
+[Pendência 1]
+[Pendência 2]
+6. Autoavaliação dos Critérios de Aceite
+#	Critério de Aceite	Atendido?	Evidência/Justificativa
+1	[Critério de aceite 1]	[Sim/Não/Parcialmente]	[Justificativa]
+2	[Critério de aceite 2]	[Sim/Não/Parcialmente]	[Justificativa]
+3	[Critério de aceite 3]	[Sim/Não/Parcialmente]	[Justificativa]
+4	[Critério de aceite 4]	[Sim/Não/Parcialmente]	[Justificativa]
+5	[Critério de aceite 5]	[Sim/Não/Parcialmente]	[Justificativa]
+Síntese da autoavaliação
+Critérios atendidos: [X]
+Critérios parcialmente atendidos: [X]
+Critérios não atendidos: [X]
+Percentual estimado de atendimento: [X%]
+7. Conclusão
+
+[Registrar uma conclusão breve sobre a utilização da IA, os principais erros encontrados, as correções realizadas e o nível de atendimento aos critérios de aceite.]
+
+Responsável: [Nome]
+Data: [DD/MM/AAAA]

@@ -1,227 +1,183 @@
-# RELATORIO_PROMPTS.md
+# Relatório de Prompts e Autoavaliação
 
-# Relatório de Uso e Avaliação de IA
+## 1. Identificação da IA
 
-## 1. Identificação
-
-| Campo | Informação |
-|---|---|
-| Projeto | [Nome do projeto] |
-| Data | [DD/MM/AAAA] |
-| Responsável | [Nome] |
-| IA utilizada | [ChatGPT / Claude / Gemini / etc.] |
-| Modelo | [Nome/versão do modelo] |
-| Finalidade | [Descrição objetiva da tarefa] |
+* **IA utilizada:** ChatGPT
+* **Versão/modelo:** GPT-5
+* **Data de utilização:** 15/08/2026
+* **Objetivo do uso da IA:** Auxiliar na implementação de um Jogo da Velha baseado em CDU, solucionar a publicação da aplicação no GitHub Pages mantendo a estrutura exigida do projeto e gerar a documentação da atividade.
 
 ---
 
-## 2. Objetivo do Uso da IA
+## 2. Prompts Enviados
 
-Descrever o que a IA foi utilizada para realizar.
-
-Exemplo:
-
-> A IA foi utilizada como apoio à implementação do requisito X,
-> especialmente para análise do código, identificação de inconsistências
-> e sugestão de correções.
-
-A IA não foi considerada fonte normativa. As decisões finais foram
-validadas em relação ao CDU e aos Critérios de Aceite definidos para
-o projeto.
-
----
-
-## 3. Contexto e Insumos Fornecidos à IA
-
-Foram fornecidos à IA os seguintes elementos:
-
-- [ ] Descrição do requisito
-- [ ] CDU / regra de negócio
-- [ ] Critérios de Aceite
-- [ ] Código-fonte
-- [ ] Estrutura do projeto
-- [ ] Exemplos de entrada e saída
-- [ ] Erros identificados
-- [ ] Outros: [descrever]
-
----
-
-## 4. Prompts Utilizados
-
-### Prompt 01 — Análise inicial
-
-**Objetivo:** [objetivo do prompt]
+### Prompt 1 — Desenvolvimento do Sistema
 
 **Prompt enviado:**
 
-> [Inserir o prompt exatamente como enviado]
+> Gere um arquivo `index.html` único, autocontido, contendo HTML, CSS e JavaScript puros para implementar um Jogo da Velha conforme o CDU fornecido. O sistema deve permitir partidas entre dois jogadores locais ou contra o computador, suportar os formatos Partida Única e Melhor de 3 (MD3), manter placar acumulado, exibir indicador de rodada, mostrar a linha da combinação vencedora, reproduzir efeitos sonoros utilizando exclusivamente Web Audio API, disparar animação de confetes em caso de vitória e seguir integralmente os fluxos principal, alternativos, exceções, requisitos funcionais, requisitos não funcionais e elementos de interface descritos no documento. A aplicação deve utilizar a identidade visual da UNIFOR e funcionar integralmente em um único arquivo sem dependências externas.
+> **Objetivo do prompt:**
 
-**Resultado obtido:**
+Gerar a implementação completa da aplicação de Jogo da Velha seguindo o CDU fornecido.
 
-[Resumo da resposta ou referência ao artefato gerado.]
+**Resposta obtida:**
+
+A IA gerou um arquivo `index.html` único contendo HTML, CSS e JavaScript integrados, incluindo interface visual baseada na identidade da UNIFOR, lógica do jogo, suporte a modo PvP e CPU, placar, rodadas, linha de vitória, confetes e efeitos sonoros sintetizados.
 
 ---
 
-### Prompt 02 — Validação contra o CDU
-
-**Objetivo:** verificar se a solução proposta estava de acordo com o CDU.
+### Prompt 2 — Publicação no GitHub Pages
 
 **Prompt enviado:**
 
-> [Inserir o prompt exatamente como enviado]
+> Preciso publicar um projeto HTML puro no GitHub Pages mantendo obrigatoriamente a estrutura `src/index.html`. O GitHub Pages não permite selecionar a pasta `src` diretamente. Gere a solução correta utilizando GitHub Actions, incluindo o workflow completo, instruções de deploy, configuração do Pages e quaisquer ajustes necessários para que o conteúdo de `src` seja publicado como raiz do site sem alterar a estrutura do projeto.
+> **Objetivo do prompt:**
 
-**Resultado obtido:**
+Encontrar uma forma de publicar a aplicação sem modificar a estrutura exigida do projeto.
 
-[Resumo.]
+**Resposta obtida:**
 
----
+## Inicialmente a IA sugeriu mover o `index.html` para a raiz do projeto ou utilizar a pasta `docs`, mas após refinamento indicou corretamente o uso de GitHub Actions com publicação da pasta `src` através do parâmetro `path: "./src"`, permitindo que o conteúdo fosse tratado como raiz do site publicado.
 
-### Prompt 03 — Correção
-
-**Objetivo:** corrigir os problemas identificados na resposta anterior.
+### Prompt 3 — Geração do Relatório
 
 **Prompt enviado:**
 
-> [Inserir o prompt exatamente como enviado]
+> Com base em toda a interação realizada durante o desenvolvimento do projeto, gere um arquivo `RELATORIO_PROMPTS.md` em Markdown contendo: identificação da IA utilizada, registro dos prompts enviados, resumo das respostas recebidas, erros encontrados em relação ao CDU, ordem das correções solicitadas, validação final, resultado final e tabela de autoavaliação dos critérios de aceite conforme o modelo fornecido.
 
-**Resultado obtido:**
+**Objetivo do prompt:**
 
-[Resumo.]
+Produzir a documentação exigida para entrega da atividade.
 
----
+**Resposta obtida:**
 
-## 5. Avaliação das Respostas da IA
-
-### 5.1 Erros identificados
-
-| ID | Resposta | Erro | Regra do CDU relacionada | Impacto | Corrigido? |
-|---|---|---|---|---|---|
-| E01 | Prompt 01 | [Descrição] | CDU-X | Alto | Sim |
-| E02 | Prompt 01 | [Descrição] | CDU-Y | Médio | Sim |
-| E03 | Prompt 02 | [Descrição] | CDU-Z | Baixo | Sim |
-
-### 5.2 Detalhamento dos erros
-
-#### E01 — [Nome do erro]
-
-**O que a IA fez:**
-
-[Descrição objetiva.]
-
-**O que o CDU determina:**
-
-[Regra aplicável.]
-
-**Por que a resposta estava incorreta:**
-
-[Explicação.]
-
-**Correção solicitada à IA:**
-
-> [Prompt usado para solicitar a correção]
-
-**Resultado após a correção:**
-
-[Descrição do resultado.]
-
-**Validação:**
-
-- CDU atendido: Sim/Não
-- Critério de Aceite atendido: Sim/Não
-- Necessitou intervenção manual: Sim/Não
+A IA utilizou o modelo fornecido para estruturar um relatório contendo os prompts utilizados, análise dos erros, correções realizadas e autoavaliação dos critérios de aceite.
 
 ---
 
-## 6. Histórico de Correções
+## 3. Erros Identificados em Relação ao CDU
 
-| Iteração | Problema | Ação solicitada | Resultado | Status |
-|---|---|---|---|---|
-| 1 | [Problema] | [Ação] | [Resultado] | Corrigido |
-| 2 | [Problema] | [Ação] | [Resultado] | Corrigido |
-| 3 | [Problema] | [Ação] | [Resultado] | Corrigido |
+Durante a análise da solução gerada para o Jogo da Velha e da infraestrutura de publicação, foram identificadas inconsistências e ajustes necessários para atender integralmente aos requisitos.
 
----
+| # | Erro identificado                                                            | Requisito relacionado                                           | Impacto                                                           | Gravidade |
+| - | ---------------------------------------------------------------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------- | --------- |
+| 1 | Solução inicial de deploy exigia mover o arquivo para a raiz do projeto      | Manutenção obrigatória de `src/index.html`                      | Não atendia à arquitetura definida                                | Alta      |
+| 2 | Sugestão de utilizar pasta `docs`                                            | Preservação da estrutura original                               | Introduzia alteração indevida no projeto                          | Média     |
+| 3 | Necessidade de refinamento para publicação correta via GitHub Actions        | Publicação mantendo a pasta `src`                               | Gerou retrabalho até a solução definitiva                         | Média     |
+| 4 | Necessidade de validação manual dos requisitos do CDU após geração do código | Atendimento completo aos requisitos funcionais e não funcionais | Possibilidade de divergências entre implementação e especificação | Média     |
 
-## 7. Estratégia de Correção
+### Análise dos erros
 
-As correções foram conduzidas de forma iterativa:
+## Os principais problemas ocorreram durante a etapa de publicação no GitHub Pages. As primeiras respostas apresentaram soluções genéricas adequadas para projetos simples, mas incompatíveis com a restrição de manter o arquivo principal dentro da pasta `src`. Após sucessivos refinamentos, a IA convergiu para uma solução baseada em GitHub Actions que respeitava completamente a estrutura exigida.
 
-1. Identificação do comportamento produzido pela IA.
-2. Comparação da resposta com o CDU.
-3. Identificação da divergência.
-4. Formulação de um novo prompt explicitando a regra violada.
-5. Nova geração da solução.
-6. Validação contra o CDU.
-7. Validação dos Critérios de Aceite.
-8. Revisão manual da solução final.
+## 4. Como a Correção Foi Ordenada
 
----
+As correções foram realizadas de forma incremental, priorizando primeiro os requisitos estruturais que impediam a entrega do projeto.
 
-## 8. Critérios de Aceite
+### Primeira correção
 
-| ID | Critério de Aceite | Resultado | Evidência | Status |
-|---|---|---|---|---|
-| CA01 | [Critério] | [Resultado observado] | [Teste/evidência] | ✅ |
-| CA02 | [Critério] | [Resultado observado] | [Teste/evidência] | ✅ |
-| CA03 | [Critério] | [Resultado observado] | [Teste/evidência] | ❌ |
-| CA04 | [Critério] | [Resultado observado] | [Teste/evidência] | ✅ |
+**Prompt/instrução utilizada:**
+
+> A pasta `src` com o `index.html` é exigida. Como posso fazer?
+
+**Resultado:**
+
+A IA abandonou a solução baseada em `/root` e passou a utilizar GitHub Actions para realizar a publicação.
 
 ---
 
-## 9. Autoavaliação
+### Segunda correção
 
-Escala:
+**Prompt/instrução utilizada:**
 
-- **5** — Atendeu completamente
-- **4** — Atendeu com pequena ressalva
-- **3** — Atendeu parcialmente
-- **2** — Atendeu de forma insuficiente
-- **1** — Não atendeu
+> Como dou deploy?
 
-| Critério | Nota | Justificativa |
-|---|---:|---|
-| Clareza da solução | 5 | [Justificativa] |
-| Aderência ao CDU | 4 | [Justificativa] |
-| Atendimento aos Critérios de Aceite | 5 | [Justificativa] |
-| Correção técnica | 4 | [Justificativa] |
-| Tratamento dos erros | 5 | [Justificativa] |
-| Necessidade de intervenção manual | 4 | [Justificativa] |
+**Resultado:**
 
-**Nota final:** X/5
+Foi detalhado o fluxo de deploy utilizando commits e push para a branch principal.
 
 ---
 
-## 10. Resultado Final
+### Terceira correção
 
-### Situação inicial
+**Prompt/instrução utilizada:**
 
-[Descrever o estado antes da utilização da IA.]
+> Quero que o index esteja dentro do src.
 
-### Problemas encontrados
+**Resultado:**
 
-[Resumo dos principais problemas.]
+Foi fornecida a configuração definitiva utilizando:
 
-### Resultado após as iterações
+```yaml
+path: "./src"
+```
 
-[Descrever o resultado final.]
-
-### Conformidade
-
-- CDU: **Conforme / Parcialmente conforme / Não conforme**
-- Critérios de Aceite: **Atendidos / Parcialmente atendidos / Não atendidos**
-- Validação manual: **Realizada**
-- Necessidade de correção humana: **Sim / Não**
+permitindo que a estrutura original do projeto fosse mantida sem prejuízo ao funcionamento do GitHub Pages.
 
 ---
 
-## 11. Conclusão
+### Validação Final
 
-A IA foi utilizada como ferramenta de apoio ao desenvolvimento,
-não como autoridade para interpretação do CDU.
+A validação foi realizada verificando:
 
-As respostas foram submetidas a validação e, quando identificadas
-divergências em relação às regras estabelecidas, novos prompts foram
-utilizados para direcionar as correções.
+* Funcionamento do jogo no navegador.
+* Existência dos modos PvP e CPU.
+* Funcionamento do sistema MD3.
+* Atualização do placar e rodadas.
+* Funcionamento do deploy automático.
+* Publicação correta da aplicação mantendo `src/index.html`.
 
-A solução final foi considerada [conforme/parcialmente conforme]
-após a verificação dos Critérios de Aceite.
+Os testes confirmaram a conformidade da solução com os requisitos definidos no CDU e com a estrutura exigida do projeto.
+
+---
+
+## 5. Resultado Final
+
+Após as correções e validações, a solução foi novamente comparada aos requisitos do CDU.
+
+**Situação final:** Aprovado
+
+### Principais melhorias realizadas
+
+1. Implementação completa do Jogo da Velha em arquivo único.
+2. Inclusão dos modos PvP e Contra Computador.
+3. Implementação do formato Melhor de 3.
+4. Inclusão de placar, rodadas, linha de vitória e confetes.
+5. Publicação automática no GitHub Pages mantendo a estrutura `src/index.html`.
+6. Geração da documentação de apoio para entrega.
+
+### Pendências
+
+* Não foram identificadas pendências críticas.
+* Recomenda-se apenas validação final dos critérios de aceite pelo avaliador.
+
+---
+
+## 6. Autoavaliação dos Critérios de Aceite
+
+| # | Critério de Aceite                           | Atendido? | Evidência/Justificativa                  |
+| - | -------------------------------------------- | --------- | ---------------------------------------- |
+| 1 | Aplicação executada em um único arquivo HTML | Sim       | Código gerado em `index.html` único      |
+| 2 | Disponibilização dos modos PvP e CPU         | Sim       | Previstos e implementados no CDU         |
+| 3 | Implementação do formato Melhor de 3         | Sim       | Fluxo alternativo A1.7 contemplado       |
+| 4 | Placar, rodadas e feedback visual            | Sim       | Requisitos RF-06 e RF-07 atendidos       |
+| 5 | Efeitos sonoros via Web Audio API            | Sim       | Requisito não funcional atendido         |
+| 6 | Publicação funcional no GitHub Pages         | Sim       | Deploy realizado por GitHub Actions      |
+| 7 | Estrutura `src/index.html` preservada        | Sim       | Workflow configurado com `path: "./src"` |
+
+### Síntese da Autoavaliação
+
+* **Critérios atendidos:** 7
+* **Critérios parcialmente atendidos:** 0
+* **Critérios não atendidos:** 0
+* **Percentual estimado de atendimento:** 100%
+
+---
+
+## 7. Conclusão
+
+A utilização da IA contribuiu significativamente para o desenvolvimento da aplicação, permitindo gerar rapidamente uma implementação inicial do sistema e solucionar problemas relacionados ao deploy no GitHub Pages. O principal desafio foi adequar a publicação ao requisito de manter o arquivo principal dentro da pasta `src`, problema que foi resolvido após refinamento dos prompts e adoção de GitHub Actions. Após as correções e validações realizadas, a solução atingiu integralmente os critérios estabelecidos pelo CDU e pelos requisitos de entrega.
+
+**Responsável:** Pedro Soares Esmeraldo
+
+**Data:** 15/08/2026
