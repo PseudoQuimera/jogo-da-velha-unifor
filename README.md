@@ -62,6 +62,7 @@ jogo-da-velha-unifor/
 │    ├── 15_08_26-Modelo_do_Relatorio_de_Prompts.txt
 │    ├── 15_08_26-README.md.txt
 │    ├── 15_08_26-RELATORIO_PROMPTS.md.txt
+│    ├── 16_08_26-Logo_Unifor.txt
 │    └── README.txt
 ├── src/
 │   └── index.html
