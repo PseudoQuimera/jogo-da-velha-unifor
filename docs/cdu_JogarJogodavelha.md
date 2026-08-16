@@ -1,259 +1,748 @@
 # Especificação de Requisitos Funcionais
 
-## Caso de Uso (CDU) - Jogo da Velha Web - UNIFOR
+## Caso de Uso (CDU) — Jogar Jogo da Velha Web — UNIFOR
+
+---
 
 ## Histórico de Versões
 
-| Data       | Versão | Descrição                                     | Autor        |
-| ---------- | ------ | --------------------------------------------- | ------------ |
-| 08/08/2026 | 0.1    | Criação do caso de uso de Jogar Jogo da Velha | Equipe LAPIS |
+| Data | Versão | Descrição | Autor |
+|---|---|---|---|
+| 08/08/2026 | 0.1 | Criação do caso de uso de Jogar Jogo da Velha | Pedro |
+| 15/08/2026 | 0.2 | Revisão do CDU com base na implementação do `src/index.html` | Pedro |
+*obs: o versionamento não foi realizado*
 
 ---
 
-## 1. Nome do Caso de Uso
+# 1. Nome do Caso de Uso
 
 **Jogar Jogo da Velha**
 
-## 2. Objetivo
+---
 
-Permitir que o usuário dispute partidas do Jogo da Velha em ambiente web, oferecendo modos contra outro jogador local ou contra o computador, formatos de partida única ou Melhor de 3 (MD3), acompanhamento do placar, efeitos visuais da linha vitoriosa, efeitos sonoros e confetes na vitória.
+# 2. Objetivo
 
-## 3. Tipo de Caso de Uso
+Permitir que o jogador dispute partidas de Jogo da Velha em ambiente web, podendo jogar contra outro jogador local ou contra o computador, nos formatos **Partida Única** ou **Melhor de 3 (MD3)**, com acompanhamento do placar, indicação da rodada, detecção de vitória e empate, destaque visual da combinação vencedora, efeitos sonoros sintetizados, animação de confetes e indicação visual do campeão no formato MD3.
+
+---
+
+# 3. Tipo de Caso de Uso
 
 **Concreto**
 
-## 4. Atores
+---
 
-### 4.1 Primário
+# 4. Atores
 
-* **Jogador:** Inicia o caso de uso e realiza as jogadas no tabuleiro.
+## 4.1 Ator Primário
 
-### 4.2 Secundário
+**Jogador:** interage com a interface, seleciona o modo e formato da partida, realiza as jogadas e pode reiniciar a partida.
 
-* **Computador:** Solução interna/autômata que responde ativamente às jogadas do Jogador quando o modo contra IA está ativado.
+## 4.2 Ator Secundário
 
-## 5. Precondições
-
-O Jogador deve acessar a aplicação web por meio de um navegador compatível com suporte a JavaScript e Web Audio API.
-
-## 6. Fluxo Principal
-
-* **P1.** O Jogador acessa a aplicação.
-* **P2.** O sistema exibe a interface principal contendo a identificação da universidade ("UNIVERSIDADE DE FORTALEZA"), o título, os seletores de "Modo de Jogo" (2 Jogadores / Contra o Computador) e "Formato da Partida" (Partida Única / Melhor de 3), o placar zerado, o indicador de rodada, a mensagem de status da vez ("Vez do Jogador X"), o tabuleiro 3x3 com células vazias e o botão "Reiniciar Jogo".
-* **P3.** O Jogador seleciona uma célula vazia do tabuleiro.
-* **P4.** O sistema registra a jogada do jogador atual.
-  * **P4.1.** Preenche a célula selecionada com o símbolo do jogador atual ('X' ou 'O').
-  * **P4.2.** Toca o efeito sonoro sintetizado correspondente ao símbolo.
-  * **P4.3.** Avalia o tabuleiro em busca de combinações vitoriosas nas linhas, colunas ou diagonais. **[E1]** **[A1]**
-* **P5.** O sistema alterna o turno para o próximo jogador.
-* **P6.** O sistema atualiza a mensagem de status exibindo a vez do próximo jogador.
-* **P7.** O Jogador realiza a jogada seguinte. **[A2]**
+**Computador:** componente interno da aplicação que realiza automaticamente as jogadas do símbolo `O` quando o modo Contra o Computador está selecionado.
 
 ---
 
-## 7. Fluxos Alternativos
+# 5. Precondições
 
-### A1. Fim de Rodada por Vitória
-
-* **A1.1.** No passo **P4.3**, o sistema identifica três símbolos iguais alinhados em uma linha, coluna ou diagonal.
-* **A1.2.** O sistema traça uma linha visual contínua sobre a sequência de três células vitoriosas.
-* **A1.3.** O sistema dispara a animação de confetes.
-* **A1.4.** O sistema toca o acorde sonoro sintetizado de vitória.
-* **A1.5.** O sistema incrementa a pontuação do jogador vencedor no placar.
-* **A1.6.** O sistema atualiza a mensagem de status declarando o vencedor da rodada.
-* **A1.7.** Caso o formato selecionado seja **Melhor de 3 (MD3)**:
-  * **A1.7.1.** Se algum jogador atingir 2 vitórias, o sistema declara o campeão definitivo da partida e encerra os turnos.
-  * **A1.7.2.** Caso nenhum jogador tenha atingido 2 vitórias e a rodada seja menor que 3, o sistema incrementa o número da rodada, aguarda 2 segundos, limpa o tabuleiro, esconde a linha vitoriosa e retorna ao passo **P2** para a nova rodada.
-* **A1.8.** Caso seja **Partida Única**, o jogo é finalizado até que ocorra um reinício manual.
-
-### A2. Jogada do Computador (Modo Contra a CPU)
-
-* **A2.1.** No passo **P7**, estando configurado o modo "Contra o Computador" e sendo a vez do jogador 'O':
-* **A2.2.** O sistema bloqueia temporariamente novos cliques do Jogador.
-* **A2.3.** O sistema aguarda um intervalo de reflexão (400ms).
-* **A2.4.** O sistema escolhe uma posição vazia no tabuleiro.
-* **A2.5.** O sistema executa o movimento do Computador na célula escolhida e segue para o passo **P4.1**.
-
-### A3. Reinício da Partida / Alteração de Parâmetros
-
-* **A3.1.** Em qualquer passo do jogo, o Jogador clica no botão "Reiniciar Jogo" ou altera qualquer um dos seletores ("Modo de Jogo" ou "Formato da Partida").
-* **A3.2.** O sistema zera o placar de ambos os jogadores e o contador de rodadas.
-* **A3.3.** O sistema oculta a linha vitoriosa e limpa todas as células do tabuleiro.
-* **A3.4.** O sistema define o Jogador X como o primeiro a jogar.
-* **A3.5.** O sistema retorna ao passo **P2**.
+- O jogador deve acessar a aplicação por meio de um navegador compatível com HTML5, CSS e JavaScript.
+- O navegador deve permitir a execução de JavaScript.
+- Para os efeitos sonoros, o navegador deve possuir suporte à Web Audio API.
+- A aplicação deve estar carregada com seus recursos contidos no próprio arquivo HTML.
 
 ---
 
-## 8. Fluxos de Exceção
+# 6. Fluxo Principal — Jogar Partida
 
-### E1. Fim de Rodada por Empate
+**P1.** O jogador acessa a aplicação.
 
-* **E1.1.** No passo **P4.3**, o sistema identifica que todas as 9 células foram preenchidas e nenhuma combinação vitoriosa foi alcançada.
-* **E1.2.** O sistema toca o som descendente sintetizado de empate.
-* **E1.3.** O sistema atualiza a mensagem de status exibindo "Rodada Empatada!".
-* **E1.4.** Se o formato for **Melhor de 3 (MD3)** e a rodada for menor que 3, o sistema aguarda 2 segundos, limpa o tabuleiro e reinicia a rodada sem incrementar o número da rodada atual.
+**P2.** O sistema inicializa uma nova partida com:
+
+- tabuleiro vazio;
+- jogador `X` como primeiro jogador;
+- placar `0 × 0`;
+- rodada `1`;
+- modo `2 Jogadores (PVP)`;
+- formato `Partida Única`;
+- partida ativa;
+- mensagem de status `"Vez do Jogador X"`.
+
+**P3.** O sistema exibe a interface contendo:
+
+- identificação `"Universidade de Fortaleza"`;
+- título `"Jogo da Velha"`;
+- indicação de que o jogador pode desafiar amigos ou o computador;
+- seletor Modo de Jogo;
+- seletor Formato da Partida;
+- placar do Jogador X;
+- contador de rodada;
+- placar do Jogador O ou Computador;
+- mensagem de status;
+- tabuleiro 3 × 3;
+- botão `"REINICIAR JOGO"`.
+
+**P4.** O jogador seleciona uma célula vazia do tabuleiro.
+
+**P5.** O sistema verifica se:
+
+- a partida está ativa;
+- a célula está vazia;
+- a jogada é permitida para o jogador atual.
+
+**P6.** O sistema registra a jogada:
+
+- atribui `X` ou `O` à posição selecionada;
+- atualiza visualmente a célula;
+- desabilita a célula ocupada;
+- reproduz o efeito sonoro correspondente ao símbolo.
+
+**P7.** O sistema verifica se a jogada produziu uma combinação vencedora entre as oito possibilidades de linhas, colunas e diagonais. **[A1] [E1]**
+
+**P8.** Caso não exista vencedor ou empate, o sistema alterna o jogador atual entre `X` e `O`.
+
+**P9.** O sistema atualiza a mensagem de status para indicar o próximo jogador.
+
+**P10.** Caso o modo seja Contra o Computador e o próximo jogador seja `O`, o sistema inicia automaticamente o fluxo de jogada do computador. **[A2]**
+
+**P11.** O fluxo retorna ao passo P4 até que ocorra uma vitória, empate ou reinício.
 
 ---
 
-## 9. Pós-condições
+# 7. Fluxos Alternativos
 
-Ao término de cada rodada ou partida, a pontuação acumulada é mantida no placar até o reinício manual, e a interface indica claramente o resultado final ou a preparação para a próxima rodada.
+## A1. Fim da Rodada por Vitória
 
-## 10. Requisitos Não Funcionais
+**A1.1.** No passo P7, o sistema identifica três símbolos iguais em uma linha, coluna ou diagonal.
 
-* **Interface Institucional:** Aplicação de paleta de cores e tipografia correspondentes à identidade visual da UNIFOR (Azul `#003366`, Azul Destaque `#0056b3`, Laranja `#d97706` e Fundo `#f4f6f9`).
-* **Sintetização de Áudio (Zero Dependência de Arquivos):** Efeitos sonoros gerados exclusivamente via Web Audio API nativa do navegador.
-* **Portabilidade:** Execução completa contida em um único arquivo HTML/CSS/JS, sem necessidade de servidor back-end.
+**A1.2.** O sistema encerra temporariamente a rodada, impedindo novas jogadas.
 
-## 11. Ponto de Extensão
+**A1.3.** O sistema calcula a posição das duas extremidades da combinação vencedora no tabuleiro.
 
-Não se aplica.
+**A1.4.** O sistema desenha uma linha visual sobre as três células vencedoras.
 
-## 12. Frequência de Utilização
+**A1.5.** O sistema aplica destaque visual às três células da combinação vencedora.
 
-Uso recreativo e educacional frequente, com picos durante demonstrações ou aulas práticas de desenvolvimento front-end e engenharia de requisitos.
+**A1.6.** O sistema incrementa o placar do jogador vencedor.
+
+**A1.7.** O sistema reproduz o acorde sonoro de vitória utilizando a Web Audio API.
+
+**A1.8.** O sistema executa a animação de confetes utilizando um elemento `<canvas>`.
+
+**A1.9.** O sistema atualiza o status para:
+
+- `"Jogador X venceu a rodada!"`, quando X vencer;
+- `"Jogador O venceu a rodada!"`, no modo PVP quando O vencer;
+- `"Computador venceu a rodada!"`, no modo Contra o Computador quando O vencer.
+
+**A1.10.** Se o formato for Partida Única, o sistema mantém a rodada encerrada até que o jogador reinicie a partida.
+
+**A1.11.** Se o formato for Melhor de 3 (MD3) e um jogador atingir duas vitórias, o sistema agenda a exibição da tela de campeão.
+
+**A1.12.** O sistema exibe uma janela de campeão contendo:
+
+- ícone de troféu;
+- identificação do campeão;
+- placar final;
+- botão `"FECHAR"`.
+
+**A1.13.** Se o formato for MD3 e nenhum jogador atingir duas vitórias, o sistema aguarda aproximadamente 2 segundos.
+
+**A1.14.** Após o intervalo, o sistema inicia a próxima rodada, limpa o tabuleiro, remove o destaque da vitória, mantém o placar acumulado e define `X` como primeiro jogador.
 
 ---
 
-## 13. Interface Visual
+## A2. Jogada do Computador
 
-### IV1. Visão Geral dos Elementos da Tela
+**A2.1.** O fluxo é iniciado quando o modo Contra o Computador está selecionado e o jogador atual é `O`.
 
-| ID do Elemento  | Nome do Campo / Componente | Tipo de Componente            | Formato / Valoração / Opções                          | Estado Inicial / Padrão | Regra / Comportamento na Interface                                            |
-| :-------------- | :------------------------- | :---------------------------- | :-------------------------------------------------------- | :----------------------- | :---------------------------------------------------------------------------- |
-| **UI-01** | Subtítulo Institucional   | Texto                         | Texto em caixa alta (`UNIVERSIDADE DE FORTALEZA`)       | Fixo                     | Exibido no topo do cabeçalho em tom azul de destaque.                        |
-| **UI-02** | Título Principal          | Texto / Heading (`<h1>`)    | Texto em caixa alta (`JOGO DA VELHA`)                   | Fixo                     | Título principal da aplicação em Azul UNIFOR (`#003366`).                |
-| **UI-03** | Seletor de Modo            | Dropdown (`<select>`)       | •`2 Jogadores (PVP)`• `Contra o Computador`         | `2 Jogadores (PVP)`    | Ao ser alterado, zera o placar e altera o rótulo do Jogador O (UI-07).       |
-| **UI-04** | Seletor de Formato         | Dropdown (`<select>`)       | •`Partida Única`• `Melhor de 3 (MD3)`              | `Partida Única`       | Ao ser alterado, zera o placar e ajusta a exibição das rodadas (UI-06).     |
-| **UI-05** | Placar - Jogador X         | Valor Numérico               | Numérico inteiro ($\ge 0$)                             | `0`                    | Exibe o total de vitórias do Jogador X na cor azul.                          |
-| **UI-06** | Contador de Rodada         | Texto                         | Formato`Atual/Total` (ex: `1/1` ou `1/3`)           | `1/1`                  | Exibe`1/1` em Partida Única e atualiza até `3/3` no modo Melhor de 3.   |
-| **UI-07** | Placar - Jogador O / CPU   | Valor Numérico               | Numérico inteiro ($\ge 0$)                             | `0`                    | Exibe o total de vitórias do Jogador O ou Computador na cor laranja.         |
-| **UI-08** | Status do Jogo             | Texto                         | Mensagem dinâmica (ex:`Vez do Jogador X`, `Empate!`) | `Vez do Jogador X`     | Atualiza a cada jogada ou término de rodada.                                 |
-| **UI-09** | Células do Tabuleiro      | Botões Grid ($3 \times 3$) | Matriz de 9 botões com valores`''`, `'X'` ou `'O'` | Todas vazias (`''`)    | Ao clicar, insere o símbolo do jogador atual e desabilita a célula clicada. |
-| **UI-10** | Linha de Vitória          | Div (`overlay`)             | Linha colorida esticada e rotacionada sobre o grid        | Oculta (`opacity: 0`)  | Calculada via CSS/JS para cobrir o centro das 3 células vitoriosas.          |
-| **UI-11** | Botão Reiniciar           | Botão (`<button>`)         | Texto em caixa alta (`REINICIAR JOGO`)                  | Habilitado               | Zera placar, rodadas, limpa o tabuleiro e reseta para o turno do Jogador X.   |
+**A2.2.** O sistema bloqueia os cliques das células enquanto a CPU estiver realizando sua jogada.
 
-### IV2. Protótipo de Interface (Wireframe Low-Fi)
+**A2.3.** O sistema exibe o status `"Computador pensando..."` e aplica uma animação visual de espera.
+
+**A2.4.** O sistema aguarda aproximadamente 400 ms.
+
+**A2.5.** O sistema calcula a jogada da CPU considerando as posições vazias.
+
+**A2.6.** A CPU procura, nesta ordem:
+
+1. uma posição que permita vencer imediatamente;
+2. uma posição que bloqueie uma vitória de X;
+3. o centro do tabuleiro;
+4. um dos cantos disponíveis;
+5. qualquer posição disponível.
+
+**A2.7.** Caso exista uma posição válida, o sistema registra `O` nessa posição.
+
+**A2.8.** O sistema reproduz o efeito sonoro da jogada de `O`.
+
+**A2.9.** O sistema retorna ao fluxo principal para verificar vitória ou empate.
+
+---
+
+## A3. Reinício da Partida
+
+**A3.1.** O jogador seleciona `"REINICIAR JOGO"`.
+
+**A3.2.** O sistema cancela temporizadores pendentes de transição de rodada ou jogada da CPU.
+
+**A3.3.** O sistema limpa todas as nove posições do tabuleiro.
+
+**A3.4.** O sistema define `X` como jogador atual.
+
+**A3.5.** O sistema define a partida como ativa.
+
+**A3.6.** O sistema zera o placar de X e O.
+
+**A3.7.** O sistema redefine a rodada para 1.
+
+**A3.8.** O sistema remove a linha e o destaque visual da última vitória.
+
+**A3.9.** O sistema fecha a janela de campeão, caso esteja aberta.
+
+**A3.10.** O sistema remove os confetes ativos.
+
+**A3.11.** O sistema atualiza a interface e exibe `"Vez do Jogador X"`.
+
+---
+
+## A4. Alteração do Modo de Jogo
+
+**A4.1.** O jogador altera o seletor Modo de Jogo.
+
+**A4.2.** O sistema atualiza a configuração para `pvp` ou `cpu`.
+
+**A4.3.** O sistema reinicia integralmente a partida conforme o fluxo A3.
+
+**A4.4.** Quando o modo Contra o Computador está ativo, o sistema altera o rótulo de O para `"Computador O"`.
+
+---
+
+## A5. Alteração do Formato da Partida
+
+**A5.1.** O jogador altera o seletor Formato da Partida.
+
+**A5.2.** O sistema atualiza a configuração para `single` ou `bo3`.
+
+**A5.3.** O sistema reinicia integralmente a partida conforme o fluxo A3.
+
+**A5.4.** No formato Partida Única, o indicador de rodada apresenta `1/1`.
+
+**A5.5.** No formato MD3, o indicador apresenta inicialmente `1/3` e pode avançar até `3/3`.
+
+---
+
+## A6. Fechamento da Janela de Campeão
+
+**A6.1.** Após a conclusão do MD3, o sistema exibe a janela de campeão.
+
+**A6.2.** O jogador seleciona o botão `"FECHAR"`.
+
+**A6.3.** O sistema oculta a janela de campeão.
+
+**A6.4.** O estado encerrado da partida é mantido até que o jogador selecione `"REINICIAR JOGO"`.
+
+**A6.5.** O jogador também pode fechar a janela clicando na área externa do cartão de campeão.
+
+---
+
+# 8. Fluxos de Exceção
+
+## E1. Fim da Rodada por Empate
+
+**E1.1.** No passo P7, o sistema não identifica uma combinação vencedora.
+
+**E1.2.** O sistema verifica que todas as nove células estão preenchidas.
+
+**E1.3.** O sistema encerra a rodada.
+
+**E1.4.** O sistema exibe o status `"Rodada Empatada!"`.
+
+**E1.5.** O sistema reproduz o efeito sonoro descendente de empate.
+
+**E1.6.** Se o formato for Partida Única, o sistema mantém a partida encerrada até o reinício manual.
+
+**E1.7.** Se o formato for MD3, o sistema aguarda aproximadamente 2 segundos.
+
+**E1.8.** O sistema limpa o tabuleiro e inicia uma nova rodada sem atribuir ponto a nenhum jogador.
+
+---
+
+# 9. Pós-condições
+
+## Ao término de uma rodada
+
+- o resultado da rodada é apresentado na interface;
+- o placar permanece armazenado;
+- a combinação vencedora permanece visualmente destacada até a preparação da próxima rodada ou reinício;
+- em caso de empate, nenhum jogador recebe ponto;
+- em MD3, uma nova rodada pode ser iniciada enquanto nenhum jogador possuir duas vitórias.
+
+## Ao término da partida
+
+- em Partida Única, a rodada permanece encerrada;
+- em MD3, quando um jogador alcança duas vitórias, o sistema identifica o campeão;
+- o placar final permanece disponível na interface;
+- o jogador pode fechar a janela de campeão;
+- um novo jogo somente é iniciado mediante reinício ou alteração de configuração.
+
+---
+
+# 10. Requisitos Não Funcionais
+
+## RNF-01 — Identidade Visual
+
+A aplicação deve utilizar a identidade visual definida para o projeto, incluindo:
+
+- Azul principal: `#003366`;
+- Azul de destaque: `#0056b3`;
+- Laranja: `#d97706`;
+- Laranja claro: `#f59e0b`;
+- Fundo: `#f4f6f9`.
+
+A interface implementada utiliza ainda cartões, bordas arredondadas, sombras, gradientes e comportamento responsivo.
+
+## RNF-02 — Portabilidade
+
+A aplicação deve funcionar integralmente em um único arquivo `index.html`, contendo HTML, CSS e JavaScript, sem necessidade de servidor back-end ou arquivos externos para a execução das regras do jogo.
+
+O arquivo atualmente possui aproximadamente 1.236 linhas no repositório e contém toda a implementação da interface e lógica.
+
+## RNF-03 — Áudio
+
+Os efeitos sonoros devem ser sintetizados exclusivamente por meio da Web Audio API, sem dependência de arquivos `.mp3`, `.wav` ou equivalentes.
+
+A implementação utiliza osciladores e diferentes frequências para:
+
+- jogada de X;
+- jogada de O;
+- vitória;
+- empate.
+
+## RNF-04 — Responsividade
+
+A interface deve adaptar sua disposição a telas menores, reorganizando os controles, placar, tabuleiro e demais componentes para dispositivos móveis.
+
+## RNF-05 — Acessibilidade
+
+As células do tabuleiro devem possuir rótulos `aria-label`, indicando sua posição e, quando aplicável, o símbolo ocupado.
+
+O status da partida deve utilizar `aria-live="polite"` para permitir a comunicação das alterações de estado aos recursos assistivos.
+
+## RNF-06 — Feedback Visual
+
+As ações do usuário devem produzir feedback visual por meio de:
+
+- animação de inserção dos símbolos;
+- mudança visual ao passar o cursor sobre células disponíveis;
+- destaque das células vencedoras;
+- linha de vitória;
+- animação de confetes;
+- indicador visual de que a CPU está pensando;
+- janela de campeão no encerramento do MD3.
+
+---
+
+# 11. Ponto de Extensão
+
+**Não se aplica.**
+
+---
+
+# 12. Frequência de Utilização
+
+Uso recreativo e educacional frequente, especialmente em atividades acadêmicas de desenvolvimento web, engenharia de requisitos, testes de software e demonstrações de aplicações front-end.
+
+---
+
+# 13. Interface Visual
+
+## IV1. Elementos Implementados
+
+| ID | Elemento | Tipo | Comportamento |
+|---|---|---|---|
+| UI-01 | Identificação institucional | Texto | Exibe `"Universidade de Fortaleza"`. |
+| UI-02 | Título | Heading | Exibe `"Jogo da Velha"`. |
+| UI-03 | Modo de Jogo | `<select>` | Permite selecionar PVP ou Contra o Computador. |
+| UI-04 | Formato da Partida | `<select>` | Permite selecionar Partida Única ou MD3. |
+| UI-05 | Placar X | Valor numérico | Exibe vitórias acumuladas de X. |
+| UI-06 | Rodada | Texto | Exibe a rodada atual e o total. |
+| UI-07 | Placar O/CPU | Valor numérico | Exibe vitórias de O ou do Computador. |
+| UI-08 | Status | Texto dinâmico | Informa turno, vitória, empate ou CPU pensando. |
+| UI-09 | Tabuleiro | Grid 3 × 3 | Permite selecionar células vazias. |
+| UI-10 | Linha de vitória | Overlay visual | É posicionada dinamicamente sobre as três células vencedoras. |
+| UI-11 | Confetes | Canvas | Exibe partículas animadas após uma vitória. |
+| UI-12 | Reiniciar Jogo | Botão | Reinicia estado, placar e rodada. |
+| UI-13 | Janela de campeão | Modal/overlay | Exibe o vencedor definitivo do MD3 e o placar final. |
+| UI-14 | Fechar campeão | Botão | Fecha a janela de campeão. |
+
+A implementação atual contém todos esses componentes, incluindo o canvas de confetes e o modal de campeão.
+
+---
+
+# 14. Protótipo da Interface
 
 ```text
-===================================================================
-                     UNIVERSIDADE DE FORTALEZA
-                          JOGO DA VELHA
-===================================================================
+====================================================================
+                    UNIVERSIDADE DE FORTALEZA
+                         JOGO DA VELHA
+             Desafie seus amigos ou enfrente o computador.
+====================================================================
 
- [ Modo de Jogo: 2 Jogadores (PVP) ▾ ]   [ Formato: Partida Única ▾ ]
+ [ Modo de Jogo: 2 Jogadores (PVP) ▼ ]
+ [ Formato da Partida: Partida Única ▼ ]
 
  +---------------------------------------------------------------+
- |  JOGADOR X               RODADA                   JOGADOR O   |
- |     (0)                   1/1                        (0)      |
+ | JOGADOR X             RODADA              JOGADOR O           |
+ |    0                     1/1                    0              |
  +---------------------------------------------------------------+
 
-                       Vez do Jogador X
+                         Vez do Jogador X
 
-                      +-----+-----+-----+
-                      |     |     |     |
-                      |  X  |  O  |  X  |
-                      |     |     |     |
-                      +-----+-----+-----+
-                      |     |  \  |     |
-                      |  O  |   \ |     |   <-- (Linha de Vitória)
-                      |     |    \|     |
-                      +-----+-----+-----+
-                      |     |     |\    |
-                      |     |  O  | \ X |
-                      |     |     |  \  |
-                      +-----+-----+-----+
+                  +---------+---------+---------+
+                  |         |         |         |
+                  |         |    X    |         |
+                  |         |         |         |
+                  +---------+---------+---------+
+                  |         |         |         |
+                  |    O    |         |    X    |
+                  |         |         |         |
+                  +---------+---------+---------+
+                  |         |         |         |
+                  |    O    |    X    |         |
+                  |         |         |         |
+                  +---------+---------+---------+
 
-                     [  REINICIAR JOGO  ]
-===================================================================
-```
+                     [ REINICIAR JOGO ]
 
----
+       X começa a partida. No modo contra o computador,
+                         a CPU joga como O.
+====================================================================
+Em caso de vitória, a implementação acrescenta visualmente uma linha sobre as três células vencedoras, destaca essas células e executa os confetes.
 
-## 14. Observações
+# 15. Regras de Negócio
 
-- O fluxo deve continuar a ser validado com foco em usabilidade, feedback visual e sonoro.
-- O caso de uso pode evoluir para incluir modos adicionais, como partida contra outro jogador remoto.
+## RN-01 — Primeiro Jogador
 
-## 15. Referências
+O jogador X sempre inicia a partida e cada nova rodada.
 
-- Visão da Demanda do projeto LAPIS.
-- Glossário do projeto.
-- Especificação de Requisitos Não Funcionais.
+## RN-02 — Ocupação
 
-## 16. Checklist de Validação do Artefato (CDU)
+Uma célula ocupada não pode receber outra jogada.
 
-### 16.1 Estrutura mínima
+## RN-03 — Vitória
 
-* [X] Nome do caso de uso iniciado com verbo no infinitivo.
-* [X] Objetivo claro, direto e com foco em um objetivo principal.
-* [X] Tipo do caso de uso informado.
-* [X] Atores primário e secundários identificados corretamente.
-* [X] Precondições registradas.
-* [X] Fluxo principal completo e coerente com o objetivo.
-* [X] Fluxos alternativos e de exceção definidos.
-* [X] Pós-condições registradas.
-* [X] Requisitos não funcionais específicos do CDU registrados.
-* [X] Frequência de utilização estimada.
+Uma vitória ocorre quando um jogador possui três símbolos iguais em uma das oito combinações possíveis:
 
-### 16.2 Qualidade da especificação
+- três linhas;
+- três colunas;
+- duas diagonais.
 
-* [X] Passos escritos com linguagem simples e objetiva.
-* [X] Ações descritas com verbos no presente do indicativo.
-* [X] Alternância entre ação do ator e ação da solução está clara.
-* [X] Não há ambiguidade relevante.
-* [X] Regras de negócio e mensagens foram referenciadas quando necessário.
+## RN-04 — Empate
 
-### 16.3 Consistência e rastreabilidade
+O empate ocorre quando todas as nove posições estão preenchidas e não existe combinação vencedora.
 
-* [X] Pontos de entrada e saída dos fluxos alternativos estão explícitos.
-* [X] Fluxos de exceção estão vinculados aos passos corretos da solução.
-* [X] Referências internas entre passos estão corretas.
-* [X] Interface visual está coerente com o fluxo descrito.
-* [X] Referências para visão da demanda, glossário e RNF estão atualizadas.
+## RN-05 — Pontuação
 
-### 16.4 Revisão final
+Uma vitória incrementa em um ponto o placar do respectivo jogador.
 
-* [X] Não há contradições entre seções do artefato.
-* [X] Documento revisado por pares.
-* [X] Artefato pronto para uso em desenvolvimento e testes.
+Empates não alteram o placar.
 
-## 17. Matriz de Rastreabilidade
+## RN-06 — Partida Única
 
-| ID Requisito | Funcionalidade / Comportamento | Passo do Caso de Uso | Elemento da Interface | Regra de Negócio / Validação |
-| --- | --- | --- | --- | --- |
-| **RF-01** | Seleção de Modo de Jogo | P2, A2.1, A3.1 | UI-03 (Seletor de Modo) | Alterna entre lógica 2P e chamada de IA (CPU). |
-| **RF-02** | Seleção de Formato (MD3) | P2, A1.7, A3.1 | UI-04 (Seletor de Formato) | Controla limite de vitórias ($\text{vitórias} = 2$) e contador de rodadas. |
-| **RF-03** | Marcação de Jogada | P3, P4, A2.5 | UI-09 (Células do Tabuleiro) | Célula deve estar vazia e o jogo estar ativo (`running == true`). |
-| **RF-04** | Áudio Sintetizado | P4.2, A1.4, E1.2 | N/A (Web Audio API) | Dispara frequências específicas para X, O, Vitória e Empate. |
-| **RF-05** | Detecção de Vitória / Empate | P4.3, A1.1, E1.1 | UI-08 (Status do Jogo) | Valida as 8 matrizes vitoriosas (`winPatterns`) a cada movimento. |
-| **RF-06** | Linha de Vitória e Confetes | A1.2, A1.3 | UI-10 (Linha) + Canvas Confetti | Calcula ângulo/distância entre células e dispara partículas na vitória. |
-| **RF-07** | Placar e Transição de Rodada | A1.5, A1.7, E1.4 | UI-05, UI-06, UI-07 | Atualiza pontuação e limpa tabuleiro mantendo placar acumulado. |
-| **RF-08** | Reinício Geral | A3.1, A3.2 | UI-11 (Botão Reiniciar) | Reseta matriz de dados, placar, rodadas e estilos de tela. |
+No formato Partida Única, a partida termina após vitória ou empate e permanece encerrada até o reinício.
 
----
+## RN-07 — Melhor de 3
 
-## 18. Dicionário de Dados e Estrutura de Estado
+No formato MD3, o primeiro jogador a alcançar duas vitórias é declarado campeão.
 
-| Variável / Propriedade | Tipo de Dado                    | Valor Padrão             | Descrição e Escopo de Uso                                                      |
-| ----------------------- | ------------------------------- | ------------------------- | -------------------------------------------------------------------------------- |
-| `options`             | Array de Strings (`Array(9)`) | `['', '', '', ..., '']` | Representa o estado lógico das 9 posições do tabuleiro.                       |
-| `currentPlayer`       | String                          | `'X'`                   | Armazena o jogador do turno atual (`'X'` ou `'O'`).                          |
-| `running`             | Boolean                         | `false` / `true`      | *Flag* que indica se o tabuleiro está ativo para receber cliques do usuário. |
-| `winsX`               | Integer                         | `0`                     | Armazena a contagem de vitórias acumuladas do Jogador X.                        |
-| `winsO`               | Integer                         | `0`                     | Armazena a contagem de vitórias acumuladas do Jogador O (ou CPU).               |
-| `currentRound`        | Integer                         | `1`                     | Armazena o número da rodada atual na partida.                                   |
-| `modeSelect`          | String                          | `'pvp'`                 | Configuração do modo de jogo (`'pvp'` ou `'cpu'`).                         |
-| `formatSelect`        | String                          | `'single'`              | Configuração do formato da disputa (`'single'` ou `'bo3'`).                |
+## RN-08 — Empate no MD3
+
+Um empate não atribui ponto e não incrementa a rodada. O tabuleiro é preparado para uma nova rodada.
+
+## RN-09 — CPU
+
+No modo Contra o Computador, X pertence ao jogador humano e O pertence à CPU.
+
+A CPU aguarda aproximadamente 400 ms antes de realizar sua jogada.
+
+## RN-10 — Estratégia da CPU
+
+A CPU tenta:
+
+1. ganhar imediatamente;
+2. bloquear uma vitória de X;
+3. ocupar o centro;
+4. ocupar um canto;
+5. selecionar outra posição vazia.
+
+## RN-11 — Alteração de Configuração
+
+A alteração do modo de jogo ou do formato da partida reinicia a partida e zera o placar.
+
+## RN-12 — Reinício
+
+O comando `"REINICIAR JOGO"` restaura todos os valores iniciais da partida.
 
 ---
 
-## 19. Critérios de Aceite (Para Avaliação do Professor)
+# 16. Observações de Implementação
 
-* [ ] **CA-01 (Fidelidade Visual):** A aplicação utiliza a paleta de cores institucional da UNIFOR (`#003366`, `#0056b3`) e possui o subtítulo *"UNIVERSIDADE DE FORTALEZA"*.
-* [ ] **CA-02 (Regra de Ocupação):** Não é possível sobrescrever uma célula que já possui o símbolo `'X'` ou `'O'`.
-* [ ] **CA-03 (Bloqueio pós-Fim de Jogo):** Após uma vitória ou empate, o tabuleiro bloqueia cliques em células vazias até que a próxima rodada ou reinício aconteça.
-* [ ] **CA-04 (Comportamento do Modo CPU):** Quando o modo "Contra o Computador" está selecionado, o sistema executa automaticamente a jogada do robô na vez do 'O' após uma breve pausa.
-* [ ] **CA-05 (Regra do Melhor de 3):** No formato MD3, o jogo zera o tabuleiro entre rodadas e só encerra a partida completa se um jogador atingir 2 vitórias ou após o fim da 3ª rodada.
-* [ ] **CA-06 (Efeitos Visuais de Vitória):** A linha contínua é traçada corretamente exatamente sobre as 3 células vitoriosas e os confetes são disparados na tela.
-* [ ] **CA-07 (Autonomia de Áudio):** O sistema emite os efeitos sonoros sem depender de downloads ou arquivos `.mp3` externos.
+O estado principal da aplicação é mantido em um objeto contendo:
+
+- `options`;
+- `currentPlayer`;
+- `running`;
+- `winsX`;
+- `winsO`;
+- `currentRound`;
+- `modeSelect`;
+- `formatSelect`;
+- temporizadores.
+
+A detecção de vitória utiliza exatamente oito padrões:
+
+- três linhas;
+- três colunas;
+- duas diagonais.
+
+A linha de vitória é calculada dinamicamente a partir da posição geométrica das células no navegador, considerando distância e ângulo entre a primeira e a última célula da combinação.
+
+Os confetes são produzidos diretamente por JavaScript em um elemento `<canvas>`, sem biblioteca externa de confetes.
+
+A CPU não utiliza uma IA baseada em minimax. Sua estratégia implementada é uma heurística de cinco níveis:
+
+1. vitória imediata;
+2. bloqueio;
+3. centro;
+4. cantos;
+5. posição disponível.
+
+A janela de campeão é utilizada especificamente para comunicar o vencedor definitivo do formato MD3.
+
+---
+
+# 17. Matriz de Rastreabilidade
+
+| ID Requisito | Funcionalidade / Comportamento | Passos CDU | Interface / Implementação | Validação |
+|---|---|---|---|---|
+| RF-01 | Seleção do modo de jogo | P3, A4 | UI-03 / `modeSelect` | `pvp` ou `cpu`. |
+| RF-02 | Seleção do formato | P3, A5 | UI-04 / `formatSelect` | `single` ou `bo3`. |
+| RF-03 | Marcação de jogada | P4–P6 | UI-09 / `makeMove()` | Célula vazia e partida ativa. |
+| RF-04 | Alternância de turnos | P8–P9 | UI-08 / `currentPlayer` | Alterna X ↔ O. |
+| RF-05 | Detecção de vitória | P7, A1 | `winPatterns` / `getWinningPattern()` | Oito padrões válidos. |
+| RF-06 | Detecção de empate | P7, E1 | `isDraw()` | Todas as nove células preenchidas. |
+| RF-07 | Linha de vitória | A1.3–A1.5 | UI-10 / `drawWinningLine()` | Linha calculada sobre as células vencedoras. |
+| RF-08 | Destaque das células vencedoras | A1.5 | CSS `.winning` | Três células recebem destaque. |
+| RF-09 | Confetes | A1.8 | UI-11 / Canvas | Partículas animadas após vitória. |
+| RF-10 | Áudio de jogada | P6 | Web Audio API / `playMoveSound()` | Som sintetizado para X e O. |
+| RF-11 | Áudio de vitória | A1.7 | Web Audio API / `playWinSound()` | Acorde sintetizado. |
+| RF-12 | Áudio de empate | E1.5 | Web Audio API / `playDrawSound()` | Sequência sonora descendente. |
+| RF-13 | Placar | A1.6 | UI-05 e UI-07 | Incremento do vencedor. |
+| RF-14 | Transição de rodada | A1.13–A1.14 | UI-06 / `startNextRound()` | Limpa tabuleiro e mantém placar. |
+| RF-15 | Vitória no MD3 | A1.11–A1.12 | UI-13 / `showChampion()` | Duas vitórias encerram o MD3. |
+| RF-16 | Jogada da CPU | A2 | `scheduleCpuMove()` / `chooseCpuMove()` | Executada após 400 ms. |
+| RF-17 | Estratégia da CPU | A2.5–A2.6 | `chooseCpuMove()` | Vitória, bloqueio, centro, canto ou posição livre. |
+| RF-18 | Bloqueio durante CPU | A2.2 | UI-09 / `disabled` | Usuário não pode clicar durante turno O da CPU. |
+| RF-19 | Reinício | A3 | UI-12 / `resetGame()` | Estado, placar e rodada zerados. |
+| RF-20 | Alteração de modo | A4 | UI-03 | Alteração provoca reinício. |
+| RF-21 | Alteração de formato | A5 | UI-04 | Alteração provoca reinício. |
+| RF-22 | Identidade visual | RNF-01 | CSS | Cores institucionais. |
+| RF-23 | Responsividade | RNF-04 | CSS Media Query | Adaptação para telas menores. |
+| RF-24 | Acessibilidade | RNF-05 | `aria-label`, `aria-live` | Feedback semântico. |
+
+---
+
+# 18. Dicionário de Dados e Estrutura de Estado
+
+| Variável | Tipo | Valor Inicial | Descrição |
+|---|---|---|---|
+| `state.options` | `Array(9)` | `["", "", "", "", "", "", "", "", ""]` | Representa as nove posições do tabuleiro. |
+| `state.currentPlayer` | `String` | `"X"` | Jogador cujo turno está ativo. |
+| `state.running` | `Boolean` | `true` | Indica se a rodada aceita jogadas. |
+| `state.winsX` | `Integer` | `0` | Vitórias acumuladas de X. |
+| `state.winsO` | `Integer` | `0` | Vitórias acumuladas de O ou CPU. |
+| `state.currentRound` | `Integer` | `1` | Rodada atual. |
+| `state.modeSelect` | `String` | `"pvp"` | Modo PVP ou CPU. |
+| `state.formatSelect` | `String` | `"single"` | Partida Única ou MD3. |
+| `state.transitionTimer` | `Timer/null` | `null` | Temporizador para transição entre rodadas. |
+| `state.cpuTimer` | `Timer/null` | `null` | Temporizador da jogada da CPU. |
+| `winPatterns` | `Array` | 8 combinações | Combinações possíveis de vitória. |
+| `audioContext` | `AudioContext/null` | `null` | Contexto usado para geração dos efeitos sonoros. |
+| `confettiParticles` | `Array` | `[]` | Partículas ativas do efeito de confetes. |
+| `confettiAnimation` | `AnimationFrame/null` | `null` | Identificador da animação dos confetes. |
+
+Esses elementos correspondem diretamente às estruturas presentes no `index.html`.
+
+---
+
+# 19. Critérios de Aceite
+
+## CA-01 — Identidade Visual
+
+A aplicação apresenta `"Universidade de Fortaleza"`, utiliza as cores institucionais especificadas e apresenta o título `"Jogo da Velha"`.
+
+## CA-02 — Estado Inicial
+
+Ao carregar ou reiniciar a aplicação, o tabuleiro está vazio, X inicia, o placar é `0 × 0` e a rodada é `1/1` ou `1/3`, conforme o formato.
+
+## CA-03 — Ocupação
+
+Uma célula já preenchida não pode ser sobrescrita.
+
+## CA-04 — Bloqueio Pós-Rodada
+
+Após vitória ou empate, não é possível realizar novas jogadas até a próxima rodada ou reinício.
+
+## CA-05 — Alternância de Turnos
+
+Em PVP, após cada jogada válida, o sistema alterna corretamente entre X e O.
+
+## CA-06 — CPU
+
+No modo Contra o Computador, a CPU realiza automaticamente sua jogada como O após aproximadamente 400 ms.
+
+## CA-07 — Estratégia da CPU
+
+A CPU prioriza vitória imediata, bloqueio de X, centro, cantos e demais posições disponíveis nessa ordem.
+
+## CA-08 — Vitória
+
+O sistema identifica corretamente as oito combinações vencedoras.
+
+## CA-09 — Linha de Vitória
+
+Ao ocorrer uma vitória, uma linha visual é posicionada sobre as três células vencedoras.
+
+## CA-10 — Confetes
+
+Ao ocorrer uma vitória, o sistema apresenta uma animação de confetes.
+
+## CA-11 — Áudio
+
+O sistema reproduz sons sintetizados para jogadas, vitória e empate sem depender de arquivos de áudio externos.
+
+## CA-12 — Empate
+
+Quando as nove células são preenchidas sem vencedor, o sistema informa `"Rodada Empatada!"` e reproduz o efeito sonoro de empate.
+
+## CA-13 — Placar
+
+Uma vitória incrementa apenas o placar do vencedor e um empate não altera os placares.
+
+## CA-14 — MD3
+
+No formato Melhor de 3, o primeiro jogador a alcançar duas vitórias é declarado campeão.
+
+## CA-15 — Transição MD3
+
+Quando ainda não houver campeão, o sistema limpa o tabuleiro após aproximadamente 2 segundos e inicia a próxima rodada mantendo o placar.
+
+## CA-16 — Janela de Campeão
+
+Ao terminar um MD3 por duas vitórias, o sistema exibe o campeão e o placar final em uma janela visual.
+
+## CA-17 — Reinício
+
+O botão `"REINICIAR JOGO"` zera placar e rodada, limpa o tabuleiro, remove efeitos visuais e define X como primeiro jogador.
+
+## CA-18 — Alteração de Configuração
+
+Alterar modo ou formato reinicia a partida e zera o placar.
+
+## CA-19 — Responsividade
+
+A interface permanece utilizável em telas menores.
+
+## CA-20 — Acessibilidade
+
+As células possuem rótulos acessíveis e as alterações de status podem ser comunicadas por tecnologia assistiva.
+
+---
+
+# 20. Checklist de Validação do Artefato
+
+## 20.1 Estrutura
+
+- [ ] Nome do caso de uso iniciado por verbo no infinitivo.
+- [ ] Objetivo definido.
+- [ ] Tipo do caso de uso definido.
+- [ ] Atores identificados.
+- [ ] Precondições definidas.
+- [ ] Fluxo principal definido.
+- [ ] Fluxos alternativos definidos.
+- [ ] Fluxo de exceção definido.
+- [ ] Pós-condições definidas.
+- [ ] Requisitos não funcionais definidos.
+- [ ] Regras de negócio identificadas.
+- [ ] Critérios de aceite definidos.
+
+## 20.2 Correspondência com a implementação
+
+- [ ] Modo PVP implementado.
+- [ ] Modo CPU implementado.
+- [ ] Formato Partida Única implementado.
+- [ ] Formato MD3 implementado.
+- [ ] Placar implementado.
+- [ ] Contador de rodadas implementado.
+- [ ] Detecção das oito combinações vencedoras implementada.
+- [ ] Detecção de empate implementada.
+- [ ] Linha de vitória implementada.
+- [ ] Destaque das células vencedoras implementado.
+- [ ] Confetes implementados em Canvas.
+- [ ] Áudio implementado com Web Audio API.
+- [ ] Modal de campeão implementado.
+- [ ] Reinício implementado.
+- [ ] Alteração de configurações com reinício implementada.
+- [ ] Responsividade implementada.
+- [ ] Recursos básicos de acessibilidade implementados.
+
+---
+
+# 21. Matriz de Correspondência com o Código
+
+| Componente do CDU | Implementação no `index.html` |
+|---|---|
+| Estado da partida | `state` |
+| Combinações vencedoras | `winPatterns` |
+| Atualização da interface | `updateInterface()` |
+| Status | `setStatus()` e `updateTurnStatus()` |
+| Vitória | `getWinningPattern()` |
+| Empate | `isDraw()` |
+| Linha de vitória | `drawWinningLine()` |
+| Limpeza da linha | `hideWinningLine()` |
+| Finalização de vitória | `finishRound()` |
+| Finalização de empate | `finishDraw()` |
+| Próxima rodada | `startNextRound()` |
+| Jogada | `makeMove()` |
+| CPU | `scheduleCpuMove()` |
+| Estratégia da CPU | `chooseCpuMove()` |
+| Reinício | `resetGame()` |
+| Campeão MD3 | `showChampion()` |
+| Fechamento do campeão | `closeChampion()` |
+| Som | `getAudioContext()`, `playTone()`, `playMoveSound()`, `playWinSound()`, `playDrawSound()` |
+| Confetes | `launchConfetti()` e `animateConfetti()` |
+
+A correspondência acima foi obtida diretamente da implementação atual do arquivo `src/index.html`.
+
+---
+
+# 22. Referência da Implementação
+
+A especificação foi revisada com base no arquivo `src/index.html` do repositório **jogo-da-velha-unifor**, disponível no GitHub.
+
+O diretório `src` contém atualmente o arquivo `index.html`, e a versão analisada concentra nele a estrutura HTML, os estilos CSS e a lógica JavaScript da aplicação.
+
+**Abrir o `src/index.html` no GitHub**
+
+---
+
+# 23. Observação de Consistência
+
+Há um ponto da implementação que merece ser validado antes da entrega final do artefato:
+
+> No fluxo de empate do MD3, `finishDraw()` agenda `startNextRound(false)` sem verificar se a partida já está na terceira rodada.
+
+Assim, caso a terceira rodada termine empatada, o código atual pode iniciar novamente uma rodada mantendo o contador em `3/3`, em vez de encerrar definitivamente a disputa.
+
+Portanto, o CDU acima descreve a intenção funcional do MD3, mas esse cenário específico deve ser corrigido ou explicitamente decidido pela equipe antes da implementação ser considerada totalmente aderente ao requisito **CA-05**.
