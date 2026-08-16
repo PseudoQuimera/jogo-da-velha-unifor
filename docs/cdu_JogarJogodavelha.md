@@ -420,6 +420,7 @@ A implementação atual contém todos esses componentes, incluindo o canvas de c
                          a CPU joga como O.
 ====================================================================
 Em caso de vitória, a implementação acrescenta visualmente uma linha sobre as três células vencedoras, destaca essas células e executa os confetes.
+```
 
 # 15. Regras de Negócio
 
