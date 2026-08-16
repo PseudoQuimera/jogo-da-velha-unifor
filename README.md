@@ -28,7 +28,7 @@ Projeto desenvolvido para a disciplina da Universidade de Fortaleza (UNIFOR), co
 ### Opção 1 – Acessar Online
 
 A aplicação está disponível através do GitHub Pages:
-    https://pseudoquimera.github.io/jogo-da-velha-unifor/
+  *https://pseudoquimera.github.io/jogo-da-velha-unifor/*
 
 ### Opção 2 – Executar Localmente
 
