@@ -10,6 +10,7 @@
 |---|---|---|---|
 | 08/08/2026 | 0.1 | Criação do caso de uso de Jogar Jogo da Velha | Pedro |
 | 15/08/2026 | 0.2 | Revisão do CDU com base na implementação do `src/index.html` | Pedro |
+
 *obs: o versionamento não foi realizado*
 
 ---
