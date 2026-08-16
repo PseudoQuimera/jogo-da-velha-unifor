@@ -1,0 +1,139 @@
+Relatório de Utilização de Prompt
+Identificação da IA Utilizada
+Ferramenta: ChatGPT
+Modelo: GPT-5
+Fornecedor: OpenAI
+Prompt 1 — Geração do README do Projeto
+
+Prompt enviado:
+
+README.md: Deve conter o título do projeto, seu nome completo, matrícula, instruções de execução e o link público gerado pelo GitHub Pages rodando a aplicação. Gere o README https://pseudoquimera.github.io/jogo-da-velha-unifor/. Utilize o index.html do link https://github.com/PseudoQuimera/jogo-da-velha-unifor/tree/main/src de referência.
+
+Objetivo do prompt:
+
+Gerar o arquivo README.md do projeto Jogo da Velha contendo as informações exigidas pela atividade, incluindo identificação do autor, descrição do sistema, funcionalidades, tecnologias utilizadas, instruções para execução local e o link da aplicação publicada no GitHub Pages.
+
+Resposta obtida:
+
+A IA produziu um arquivo README.md estruturado em Markdown contendo:
+
+Título do projeto;
+Nome do autor;
+Campo para matrícula;
+Descrição da aplicação;
+Lista de funcionalidades principais;
+Tecnologias utilizadas;
+Instruções para execução local;
+Estrutura básica do projeto;
+Link público da aplicação hospedada no GitHub Pages.
+
+Resultado obtido:
+
+O README foi gerado de forma compatível com os requisitos da atividade, restando apenas o preenchimento manual da matrícula do aluno antes da entrega final.
+
+em md
+# Relatório de Utilização de Prompt
+
+
+## Identificação da IA Utilizada
+
+
+- **Ferramenta:** ChatGPT
+- **Modelo:** GPT-5
+- **Fornecedor:** OpenAI
+
+
+---
+
+
+## Prompt 1 — Geração do README do Projeto
+
+
+### Prompt enviado
+
+
+> README.md: Deve conter o título do projeto, seu nome completo, matrícula, instruções de execução e o link público gerado pelo GitHub Pages rodando a aplicação. Gere o README https://pseudoquimera.github.io/jogo-da-velha-unifor/. Utilize o index.html do link https://github.com/PseudoQuimera/jogo-da-velha-unifor/tree/main/src de referência.
+
+
+### Objetivo do prompt
+
+
+Gerar o arquivo `README.md` do projeto **Jogo da Velha**, contendo todas as informações exigidas pela atividade, incluindo identificação do autor, descrição da aplicação, funcionalidades, tecnologias utilizadas, instruções de execução e link da aplicação publicada.
+
+
+### Resposta obtida
+
+
+A IA gerou um arquivo `README.md` estruturado em Markdown contendo:
+
+
+- Título do projeto;
+- Nome do autor;
+- Campo para matrícula;
+- Descrição do sistema;
+- Funcionalidades principais;
+- Tecnologias utilizadas;
+- Instruções para execução local;
+- Estrutura básica do projeto;
+- Link público da aplicação hospedada no GitHub Pages.
+
+
+### Resultado obtido
+
+
+O README foi produzido de acordo com os requisitos especificados na atividade, fornecendo uma documentação clara para execução e acesso ao projeto. Foi necessário apenas o preenchimento manual da matrícula do aluno antes da entrega final.
+## Prompt 4 — Geração do README do Projeto 
+ 
+### Prompt enviado 
+ 
+> README.md: Deve conter o título do projeto, seu nome completo, matrícula, instruções de execução e o link público gerado pelo GitHub Pages rodando a aplicação. Gere o README https://pseudoquimera.github.io/jogo-da-velha-unifor/. Utilize o index.html do link 
+https://github.com/PseudoQuimera/jogo-da-velha-unifor/tree/main/src de referência.
+
+### Objetivo do prompt
+
+Gerar o arquivo README.md do projeto **Jogo da Velha**, contendo todas as informações exigidas pela atividade, incluindo identificação do autor, descrição da aplicação, funcionalidades, tecnologias utilizadas, instruções de execução e link da aplicação publicada.
+
+### Resposta obtida
+
+A IA gerou um arquivo README.md estruturado em Markdown contendo:
+
+- Título do projeto;
+- Nome do autor;
+- Campo para matrícula;
+- Descrição do sistema;
+- Funcionalidades principais;
+- Tecnologias utilizadas;
+- Instruções para execução local;
+- Estrutura básica do projeto;
+- Link público da aplicação hospedada no GitHub Pages.
+
+### Resultado obtido
+
+O README foi produzido de acordo com os requisitos especificados na atividade, fornecendo uma documentação clara para execução e acesso ao projeto. Foi necessário apenas o preenchimento manual da matrícula do aluno antes da entrega final.
+
+resuma
+## Prompt 4 — Geração do README do Projeto
+
+
+### Prompt enviado
+
+
+> README.md: Deve conter o título do projeto, seu nome completo, matrícula, instruções de execução e o link público gerado pelo GitHub Pages rodando a aplicação. Gere o README https://pseudoquimera.github.io/jogo-da-velha-unifor/. Utilize o index.html do link https://github.com/PseudoQuimera/jogo-da-velha-unifor/tree/main/src de referência.
+
+
+### Objetivo do prompt
+
+
+Gerar o arquivo `README.md` do projeto com as informações exigidas pela atividade.
+
+
+### Resposta obtida
+
+
+A IA criou um README contendo identificação do autor, descrição do projeto, funcionalidades, tecnologias utilizadas, instruções de execução e link da aplicação publicada.
+
+
+### Resultado obtido
+
+
+Foi gerada uma documentação completa e adequada para o projeto, necessitando apenas do preenchimento da matrícula do aluno.

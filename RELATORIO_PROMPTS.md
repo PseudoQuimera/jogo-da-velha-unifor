@@ -53,6 +53,24 @@ Produzir a documentação exigida para entrega da atividade.
 
 A IA utilizou o modelo fornecido para estruturar um relatório contendo os prompts utilizados, análise dos erros, correções realizadas e autoavaliação dos critérios de aceite.
 
+## Prompt 4 — Geração do README do Projeto
+
+### Prompt enviado
+
+> README.md: Deve conter o título do projeto, seu nome completo, matrícula, instruções de execução e o link público gerado pelo GitHub Pages rodando a aplicação. Gere o README https://pseudoquimera.github.io/jogo-da-velha-unifor/. Utilize o index.html do link https://github.com/PseudoQuimera/jogo-da-velha-unifor/tree/main/src de referência.
+
+### Objetivo do prompt
+
+Gerar o arquivo `README.md` do projeto com as informações exigidas pela atividade.
+
+### Resposta obtida
+
+A IA criou um README contendo identificação do autor, descrição do projeto, funcionalidades, tecnologias utilizadas, instruções de execução e link da aplicação publicada.
+
+### Resultado obtido
+
+Foi gerada uma documentação completa e adequada para o projeto, necessitando apenas do preenchimento da matrícula do aluno.
+
 ---
 
 ## 3. Erros Identificados em Relação ao CDU
