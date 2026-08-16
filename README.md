@@ -52,6 +52,8 @@ cd jogo-da-velha-unifor
 jogo-da-velha-unifor/
 ├── .github/workflows/
 │            └── deploy.yml
+├── docs/
+│    └── cdu_JogarJogodavelha.md
 ├── Logs_IA/
 │    ├── 13_08_26-Documentação.txt
 │    ├── 15_08_26-Github_Pages.txt
@@ -61,10 +63,10 @@ jogo-da-velha-unifor/
 │    ├── 15_08_26-README.md.txt
 │    ├── 15_08_26-RELATORIO_PROMPTS.md.txt
 │    └── README.txt
-├── 
 ├── src/
 │   └── index.html
-└── README.md
+├── README.md
+└── RELATORIO_PROMPTS.md
 ```
 
 ## Demonstração
