@@ -51,9 +51,27 @@
     }
 
     header {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
       margin-bottom: 28px;
+      text-align: left;
     }
+
+    .logo-unifor {
+      width: 82px;
+      height: 82px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
 
     .institution {
       color: var(--blue-highlight);
@@ -504,10 +522,19 @@
 
   <main class="app">
     <header>
-      <div class="institution">Universidade de Fortaleza</div>
-      <h1>Jogo da Velha</h1>
-      <p class="subtitle">Desafie seus amigos ou enfrente o computador.</p>
+      <img
+        src="https://uol.unifor.br/acesso/app/autenticacao/assets/img/logos/icon-unifor.svg"
+        alt="Logo da Universidade de Fortaleza"
+        class="logo-unifor"
+      >
+
+      <div class="header-content">
+        <div class="institution">Universidade de Fortaleza</div>
+        <h1>Jogo da Velha</h1>
+        <p class="subtitle">Desafie seus amigos ou enfrente o computador.</p>
+      </div>
     </header>
+
 
     <section class="panel controls" aria-label="Configurações da partida">
       <div class="control-group">
