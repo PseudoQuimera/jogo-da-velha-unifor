@@ -28,8 +28,7 @@ Projeto desenvolvido para a disciplina da Universidade de Fortaleza (UNIFOR), co
 ### Opção 1 – Acessar Online
 
 A aplicação está disponível através do GitHub Pages:
-
-👉 https://pseudoquimera.github.io/jogo-da-velha-unifor/
+    https://pseudoquimera.github.io/jogo-da-velha-unifor/
 
 ### Opção 2 – Executar Localmente
 
@@ -51,6 +50,18 @@ cd jogo-da-velha-unifor
 
 ```text
 jogo-da-velha-unifor/
+├── .github/workflows/
+│            └── deploy.yml
+├── Logs_IA/
+│    ├── 13_08_26-Documentação.txt
+│    ├── 15_08_26-Github_Pages.txt
+│    ├── 15_08_26-Github_Pages_Deploy_fixed.txt
+│    ├── 15_08_26-Jogo.txt
+│    ├── 15_08_26-Modelo_do_Relatorio_de_Prompts.txt
+│    ├── 15_08_26-README.md.txt
+│    ├── 15_08_26-RELATORIO_PROMPTS.md.txt
+│    └── README.txt
+├── 
 ├── src/
 │   └── index.html
 └── README.md
